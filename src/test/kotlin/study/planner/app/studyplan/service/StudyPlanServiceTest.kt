@@ -9,7 +9,9 @@ import study.planner.app.member.dto.MemberRequest
 import study.planner.app.member.repository.MemberRepository
 import study.planner.app.studyplan.dto.StudyPlanRegistrationRequest
 import java.time.LocalDate
+import javax.transaction.Transactional
 
+@Transactional
 @SpringBootTest
 internal class StudyPlanServiceTest(
         @Autowired

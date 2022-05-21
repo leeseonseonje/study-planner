@@ -19,7 +19,9 @@ class StudyPlanService(
     fun studyPlanRegistration(request: StudyPlanRegistrationRequest) {
         val member = memberRepository.findByIdOrNull(request.memberId)
 
-        val studyPlan = StudyPlan(request, member)
-        studyPlanRepository.save(studyPlan)
+        member.let {
+            val studyPlan = StudyPlan(request, member)
+            studyPlanRepository.save(studyPlan)
+        }
     }
 }

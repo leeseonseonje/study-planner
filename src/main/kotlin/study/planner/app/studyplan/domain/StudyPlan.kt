@@ -14,24 +14,24 @@ class StudyPlan(
         @JoinColumn(name = "member_id")
         var member: Member?,
 
+        var title: String? = request.title,
+
+        var content: String? = request.content,
+
+        var completeFigure: Int? = request.completeFigure,
+
+        var expectCompleteDate: LocalDate? = request.expectCompleteDate,
+
         var registrationDate: LocalDate = LocalDate.now(),
 
-        var status: PlanStatus = PlanStatus.ING
+        var status: PlanStatus = PlanStatus.ING,
 ) {
     @Id
     @GeneratedValue
     @Column(name = "study_plan_id")
     val id: Long? = null
 
-    var title: String? = request.title
-
-    var content: String? = request.content
-
-    var completeFigure: Int? = request.completeFigure
-
     var currentFigure: Int? = null
-
-    var expectCompleteDate: LocalDate? = request.expectCompleteDate
 
     var completeDate: LocalDate? = null
 }

@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import study.planner.app.member.dto.MemberRequest
 import java.lang.IllegalStateException
+import javax.transaction.Transactional
 
+@Transactional
 @SpringBootTest
 internal class MemberServiceTest(
         @Autowired
