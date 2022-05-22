@@ -23,7 +23,7 @@ class StudyPlanTest {
 
         studyPlan.currentFigureCalculate(400)
 
-        assertThat(studyPlan.currentFigure).isEqualTo(500)
+        assertThat(studyPlan.currentFigure).isEqualTo(400)
 
     }
 

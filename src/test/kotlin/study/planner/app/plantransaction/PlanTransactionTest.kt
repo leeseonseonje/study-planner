@@ -1,11 +1,9 @@
 package study.planner.app.plantransaction
 
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import study.planner.app.plantransaction.dto.PlanTransactionRequest
-import study.planner.app.studyplan.domain.StudyPlan
 
 class PlanTransactionTest {
 
@@ -13,7 +11,7 @@ class PlanTransactionTest {
     fun todayProgressCalculate() {
 
         val request = PlanTransactionRequest(1L, 10)
-        val planTransaction = PlanTransaction.of(request, null)
+        val planTransaction = PlanTransaction.of(request.dayFigure, null)
 
         val todayProgress = planTransaction.todayProgress(1000)
 
@@ -24,7 +22,7 @@ class PlanTransactionTest {
     @DisplayName("소수점 테스트")
     fun calTest() {
         val request = PlanTransactionRequest(1L, 21)
-        val planTransaction = PlanTransaction.of(request, null)
+        val planTransaction = PlanTransaction.of(request.dayFigure, null)
 
         val todayProgress = planTransaction.todayProgress(1253)
 
@@ -35,10 +33,13 @@ class PlanTransactionTest {
     @DisplayName("오늘 수치 더하기")
     fun figurePlusTest() {
         val request = PlanTransactionRequest(1L, 50)
-        val planTransaction = PlanTransaction.of(request, null)
+        val planTransaction = PlanTransaction.of(request.dayFigure, null)
+        assertThat(planTransaction.dayFigure).isEqualTo(50)
 
-        planTransaction.todayPlanTransactionUpdate(163)
+        planTransaction.todayPlanTransactionUpdate(163, 50)
+        assertThat(planTransaction.dayFigure).isEqualTo(163)
 
-        assertThat(planTransaction.dayFigure).isEqualTo(213)
+        planTransaction.todayPlanTransactionUpdate(223, 163)
+        assertThat(planTransaction.dayFigure).isEqualTo(223)
     }
 }

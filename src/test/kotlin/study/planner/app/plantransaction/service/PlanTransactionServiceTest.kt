@@ -61,8 +61,8 @@ internal class PlanTransactionServiceTest(
         assertThat(todayStudy.dayFigure).isEqualTo(100)
 
         val todayStudy1 = planTransactionService.todayStudy(PlanTransactionRequest(studyPlan?.id!!, 150))
-        assertThat(studyPlan!!.currentFigure).isEqualTo(250)
-        assertThat(todayStudy1.dayFigure).isEqualTo(250)
+        assertThat(studyPlan!!.currentFigure).isEqualTo(150)
+        assertThat(todayStudy1.dayFigure).isEqualTo(150)
     }
 
     @Test

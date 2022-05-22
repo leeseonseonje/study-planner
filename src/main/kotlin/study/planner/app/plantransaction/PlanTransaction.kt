@@ -30,13 +30,13 @@ class PlanTransaction {
     }
 
     companion object {
-        fun of(request: PlanTransactionRequest, studyPlan: StudyPlan?): PlanTransaction {
-            return PlanTransaction(studyPlan, LocalDate.now(), request.dayFigure)
+        fun of(dayFigure: Int, studyPlan: StudyPlan?): PlanTransaction {
+            return PlanTransaction(studyPlan, LocalDate.now(), dayFigure)
         }
     }
 
-    fun todayPlanTransactionUpdate(dayFigure: Int) {
-        this.dayFigure += dayFigure
+    fun todayPlanTransactionUpdate(dayFigure: Int, currentFigure: Int) {
+        this.dayFigure += (dayFigure - currentFigure)
     }
 
     fun todayProgress(completeFigure: Int): Double? {

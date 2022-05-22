@@ -65,7 +65,7 @@ class StudyPlan {
         }
     }
     fun currentFigureCalculate(todayFigure: Int) {
-        this.currentFigure += todayFigure
+        this.currentFigure = todayFigure
         complete()
     }
 

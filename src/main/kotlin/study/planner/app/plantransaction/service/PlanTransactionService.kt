@@ -19,28 +19,31 @@ class PlanTransactionService(
 ) {
 
     fun todayStudy(request: PlanTransactionRequest): PlanTransaction {
-        val studyPlan = findStudyPlan(request)
+        val studyPlan = studyPlanRepository.findByIdOrNull(request.studyPlanId)
 
         val todayPlanTransaction = planTransactionRepository.findByStudyPlanAndDay(studyPlan, LocalDate.now())
 
         todayPlanTransaction?.let {
-            it.todayPlanTransactionUpdate(request.dayFigure)
+            it.todayPlanTransactionUpdate(request.dayFigure, studyPlan!!.currentFigure)
+            studyPlan.currentFigureCalculate(request.dayFigure)
             return it
         }
 
         return newTodayPlanTransaction(request, studyPlan)
     }
 
-    private fun findStudyPlan(request: PlanTransactionRequest): StudyPlan? {
-        val studyPlan = studyPlanRepository.findByIdOrNull(request.studyPlanId)
-
-        studyPlan?.currentFigureCalculate(request.dayFigure)
-        return studyPlan
-    }
 
     private fun newTodayPlanTransaction(request: PlanTransactionRequest, studyPlan: StudyPlan?): PlanTransaction {
-        val planTransaction = PlanTransaction.of(request, studyPlan)
+        if (studyPlan != null) {
+            val dayFigure = request.dayFigure.minus(studyPlan.currentFigure)
 
-        return planTransactionRepository.save(planTransaction)
+            val planTransaction = PlanTransaction.of(dayFigure, studyPlan)
+
+            studyPlan.currentFigureCalculate(request.dayFigure)
+
+            return planTransactionRepository.save(planTransaction)
+        } else {
+            throw IllegalStateException("존재하지 않는 계획입니다.")
+        }
     }
 }
