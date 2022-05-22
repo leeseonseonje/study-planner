@@ -8,28 +8,39 @@ import javax.persistence.FetchType.*
 import kotlin.math.roundToInt
 
 @Entity
-class PlanTransaction(
-        request: PlanTransactionRequest,
-
-        @ManyToOne(fetch = LAZY)
-        @JoinColumn(name = "study_plan_id")
-        var studyPlan: StudyPlan?,
-
-        var day: LocalDate = LocalDate.now(),
-
-        var dayFigure: Int = request.dayFigure
-) {
+class PlanTransaction {
 
     @Id
     @GeneratedValue
     @Column(name = "plan_transaction_id")
     var id: Long? = null
 
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "study_plan_id")
+    var studyPlan: StudyPlan?
+
+    var day: LocalDate
+
+    var dayFigure: Int
+
+    private constructor(studyPlan: StudyPlan?, day: LocalDate, dayFigure: Int) {
+        this.studyPlan = studyPlan
+        this.day = day
+        this.dayFigure = dayFigure
+    }
+
+    companion object {
+        fun of(request: PlanTransactionRequest, studyPlan: StudyPlan?): PlanTransaction {
+            return PlanTransaction(studyPlan, LocalDate.now(), request.dayFigure)
+        }
+    }
+
+    fun todayPlanTransactionUpdate(dayFigure: Int) {
+        this.dayFigure += dayFigure
+    }
+
     fun todayProgress(completeFigure: Int): Double? {
         val progress = dayFigure.toDouble().div(completeFigure).times(100)
         return (progress * 10).roundToInt().div(10.0)
-    }
-    fun todayPlanTransactionUpdate(dayFigure: Int) {
-        this.dayFigure += dayFigure
     }
 }

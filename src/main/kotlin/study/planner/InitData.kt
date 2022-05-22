@@ -28,11 +28,11 @@ class InitData(
         ) {
 
                 fun init() {
-                        val member = Member(MemberRequest("memberA", "leeseonje9323@gmail.com"))
+                        val member = Member.of(MemberRequest("memberA", "leeseonje9323@gmail.com"))
                         em.persist(member)
 
-                        val studyPlan = StudyPlan(StudyPlanRegistrationRequest(member.id, "title", "content", 1000, LocalDate.of(2022, 7, 1)), member)
-                        em.persist(studyPlan)
+                        em.flush()
+                        em.clear()
                 }
         }
 }

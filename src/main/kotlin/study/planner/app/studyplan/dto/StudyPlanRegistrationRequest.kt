@@ -6,6 +6,6 @@ data class StudyPlanRegistrationRequest(
         var memberId: Long?,
         var title: String?,
         var content: String?,
-        var completeFigure: Int?,
+        var completeFigure: Int,
         var expectCompleteDate: LocalDate?
 )

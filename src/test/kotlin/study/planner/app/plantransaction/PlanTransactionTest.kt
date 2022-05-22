@@ -13,7 +13,7 @@ class PlanTransactionTest {
     fun todayProgressCalculate() {
 
         val request = PlanTransactionRequest(1L, 10)
-        val planTransaction = PlanTransaction(request, null)
+        val planTransaction = PlanTransaction.of(request, null)
 
         val todayProgress = planTransaction.todayProgress(1000)
 
@@ -24,7 +24,7 @@ class PlanTransactionTest {
     @DisplayName("소수점 테스트")
     fun calTest() {
         val request = PlanTransactionRequest(1L, 21)
-        val planTransaction = PlanTransaction(request, null)
+        val planTransaction = PlanTransaction.of(request, null)
 
         val todayProgress = planTransaction.todayProgress(1253)
 
@@ -35,7 +35,7 @@ class PlanTransactionTest {
     @DisplayName("오늘 수치 더하기")
     fun figurePlusTest() {
         val request = PlanTransactionRequest(1L, 50)
-        val planTransaction = PlanTransaction(request, null)
+        val planTransaction = PlanTransaction.of(request, null)
 
         planTransaction.todayPlanTransactionUpdate(163)
 
