@@ -70,7 +70,14 @@ class StudyPlan {
     }
 
     fun currentProgress(): Double {
-        val progress = this.currentFigure.toDouble().div(this.completeFigure).times(100)
+        return progressCalculate(this.currentFigure.toDouble())
+    }
+
+    fun averageProgress(averageFigure: Double): Double {
+        return progressCalculate(averageFigure)
+    }
+    private fun progressCalculate(figure: Double): Double {
+        val progress = figure.div(this.completeFigure).times(100)
         return (progress * 10).roundToInt().div(10.0)
     }
 

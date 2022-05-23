@@ -63,7 +63,7 @@ internal class StudyPlanQueryServiceTest(
         studyPlan.currentFigureCalculate(100)
         val savedStudyPlan = studyPlanRepository.save(studyPlan)
 
-        val studyPlanDetails = studyPlanQueryService.studyPlanDetails(savedStudyPlan.id)
+        val studyPlanDetails = studyPlanQueryService.studyPlanDetails(savedStudyPlan.id!!)
 
         assertThat(studyPlanDetails?.currentFigure).isEqualTo(100)
         assertThat(studyPlanDetails?.currentProgress).isEqualTo(10.0)

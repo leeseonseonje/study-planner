@@ -1,6 +1,7 @@
 package study.planner.app.plantransaction
 
 import study.planner.app.plantransaction.dto.PlanTransactionRequest
+import study.planner.app.plantransaction.dto.PlanTransactionsDto
 import study.planner.app.studyplan.domain.StudyPlan
 import java.time.LocalDate
 import javax.persistence.*
@@ -8,7 +9,7 @@ import javax.persistence.FetchType.*
 import kotlin.math.roundToInt
 
 @Entity
-class PlanTransaction {
+class PlanTransaction : Comparable<PlanTransaction> {
 
     @Id
     @GeneratedValue
@@ -42,5 +43,9 @@ class PlanTransaction {
     fun todayProgress(completeFigure: Int): Double? {
         val progress = dayFigure.toDouble().div(completeFigure).times(100)
         return (progress * 10).roundToInt().div(10.0)
+    }
+
+    override fun compareTo(other: PlanTransaction): Int {
+        TODO("Not yet implemented")
     }
 }

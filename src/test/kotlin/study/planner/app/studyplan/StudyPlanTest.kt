@@ -1,9 +1,7 @@
 package study.planner.app.studyplan
 
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
-import study.planner.app.studyplan.domain.PlanStatus
 import study.planner.app.studyplan.domain.PlanStatus.*
 import study.planner.app.studyplan.domain.StudyPlan
 import study.planner.app.studyplan.dto.StudyPlanRegistrationRequest
