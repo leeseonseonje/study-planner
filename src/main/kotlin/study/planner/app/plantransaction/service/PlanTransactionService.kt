@@ -18,10 +18,10 @@ class PlanTransactionService(
         private val planTransactionRepository: PlanTransactionRepository
 ) {
 
-    fun todayStudy(request: PlanTransactionRequest): PlanTransaction {
+    fun todayStudy(request: PlanTransactionRequest, day: LocalDate): PlanTransaction {
         val studyPlan = studyPlanRepository.findByIdOrNull(request.studyPlanId)
 
-        val todayPlanTransaction = planTransactionRepository.findByStudyPlanAndDay(studyPlan, LocalDate.now())
+        val todayPlanTransaction = planTransactionRepository.findByStudyPlanAndDay(studyPlan, day)
 
         todayPlanTransaction?.let {
             it.todayPlanTransactionUpdate(request.dayFigure, studyPlan!!.currentFigure)
@@ -29,15 +29,14 @@ class PlanTransactionService(
             return it
         }
 
-        return newTodayPlanTransaction(request, studyPlan)
+        return newTodayPlanTransaction(request, studyPlan, day)
     }
 
 
-    private fun newTodayPlanTransaction(request: PlanTransactionRequest, studyPlan: StudyPlan?): PlanTransaction {
+    private fun newTodayPlanTransaction(request: PlanTransactionRequest, studyPlan: StudyPlan?, day: LocalDate): PlanTransaction {
         if (studyPlan != null) {
-            val dayFigure = request.dayFigure.minus(studyPlan.currentFigure)
 
-            val planTransaction = PlanTransaction.of(dayFigure, studyPlan)
+            val planTransaction = PlanTransaction.of(request.dayFigure, studyPlan, day)
 
             studyPlan.currentFigureCalculate(request.dayFigure)
 

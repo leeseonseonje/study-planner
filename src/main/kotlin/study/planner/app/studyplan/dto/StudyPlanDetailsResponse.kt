@@ -12,17 +12,17 @@ data class StudyPlanDetailsResponse(
         val content: String?,
         val currentFigure: Int,
         val completeFigure: Int,
-        val currentProgress: Double,
+        val currentProgress: Double?,
         val expectCompleteRestDate: Long?,
         val expectCompleteDate: LocalDate?,
         val status: PlanStatus,
         val startDate: LocalDate,
         val afterStartDate: Long,
-        val avgFigure: Double,
-        val avgProgress: Double
+        val avgFigure: Double?,
+        val avgProgress: Double?
 ) {
     companion object {
-        fun toDto(studyPlan: StudyPlan?, planAvg: Double): StudyPlanDetailsResponse? {
+        fun toDto(studyPlan: StudyPlan?, planAvg: Double?): StudyPlanDetailsResponse? {
                 studyPlan?.let {
                 return StudyPlanDetailsResponse(
                         it.id,
@@ -30,7 +30,7 @@ data class StudyPlanDetailsResponse(
                         it.content,
                         it.currentFigure,
                         it.completeFigure,
-                        it.currentProgress(),
+                        it.currentProgress(it.currentFigure),
                         it.restExpectCompleteDate(),
                         it.expectCompleteDate,
                         it.status,

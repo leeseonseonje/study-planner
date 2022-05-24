@@ -46,7 +46,7 @@ internal class PlanTransactionServiceTest(
     @DisplayName("오늘 수치 저장  -> 오늘 등록한 계획이 처음이면 저장")
     fun planTransactionSave() {
 
-        val todayStudy = planTransactionService.todayStudy(PlanTransactionRequest(studyPlan?.id!!, 100))
+        val todayStudy = planTransactionService.todayStudy(PlanTransactionRequest(studyPlan?.id!!, 100), LocalDate.now())
 
         assertThat(todayStudy.dayFigure).isEqualTo(100)
     }
@@ -55,12 +55,12 @@ internal class PlanTransactionServiceTest(
     @DisplayName("오늘 수치 수정 -> 오늘 등록한 계획이 이미 있으면 수정")
     fun funTransactionUpdate() {
 
-        val todayStudy = planTransactionService.todayStudy(PlanTransactionRequest(studyPlan?.id!!, 100))
+        val todayStudy = planTransactionService.todayStudy(PlanTransactionRequest(studyPlan?.id!!, 100), LocalDate.now())
 
         assertThat(studyPlan!!.currentFigure).isEqualTo(100)
         assertThat(todayStudy.dayFigure).isEqualTo(100)
 
-        val todayStudy1 = planTransactionService.todayStudy(PlanTransactionRequest(studyPlan?.id!!, 150))
+        val todayStudy1 = planTransactionService.todayStudy(PlanTransactionRequest(studyPlan?.id!!, 150), LocalDate.now())
         assertThat(studyPlan!!.currentFigure).isEqualTo(150)
         assertThat(todayStudy1.dayFigure).isEqualTo(150)
     }

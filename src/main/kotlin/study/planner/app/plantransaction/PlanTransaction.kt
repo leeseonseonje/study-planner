@@ -9,7 +9,7 @@ import javax.persistence.FetchType.*
 import kotlin.math.roundToInt
 
 @Entity
-class PlanTransaction : Comparable<PlanTransaction> {
+class PlanTransaction {
 
     @Id
     @GeneratedValue
@@ -24,15 +24,19 @@ class PlanTransaction : Comparable<PlanTransaction> {
 
     var dayFigure: Int
 
-    private constructor(studyPlan: StudyPlan?, day: LocalDate, dayFigure: Int) {
+    var currentFigure: Int
+
+    private constructor(studyPlan: StudyPlan?, day: LocalDate, dayFigure: Int, currentFigure: Int) {
         this.studyPlan = studyPlan
         this.day = day
         this.dayFigure = dayFigure
+        this.currentFigure = currentFigure
     }
 
     companion object {
-        fun of(dayFigure: Int, studyPlan: StudyPlan?): PlanTransaction {
-            return PlanTransaction(studyPlan, LocalDate.now(), dayFigure)
+        fun of(currentFigure: Int, studyPlan: StudyPlan?, day: LocalDate): PlanTransaction {
+            val dayFigure = currentFigure.minus(studyPlan?.currentFigure!!)
+            return PlanTransaction(studyPlan, day, dayFigure, currentFigure)
         }
     }
 
@@ -43,9 +47,5 @@ class PlanTransaction : Comparable<PlanTransaction> {
     fun todayProgress(completeFigure: Int): Double? {
         val progress = dayFigure.toDouble().div(completeFigure).times(100)
         return (progress * 10).roundToInt().div(10.0)
-    }
-
-    override fun compareTo(other: PlanTransaction): Int {
-        TODO("Not yet implemented")
     }
 }

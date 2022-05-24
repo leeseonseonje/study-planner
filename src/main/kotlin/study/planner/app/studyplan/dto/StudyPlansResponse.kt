@@ -9,7 +9,7 @@ data class StudyPlansResponse(
         val content: String?,
         val currentFigure: Int,
         val completeFigure: Int,
-        val currentProgress: Double,
+        val currentProgress: Double?,
         val expectCompleteRestDate: Long?,
         val status: PlanStatus
 ) {
@@ -21,7 +21,7 @@ data class StudyPlansResponse(
                         studyPlan.content,
                         studyPlan.currentFigure,
                         studyPlan.completeFigure,
-                        studyPlan.currentProgress(),
+                        studyPlan.currentProgress(studyPlan.currentFigure),
                         studyPlan.restExpectCompleteDate(),
                         studyPlan.status
                 )

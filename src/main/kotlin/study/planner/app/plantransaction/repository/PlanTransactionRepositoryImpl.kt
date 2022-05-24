@@ -1,44 +1,42 @@
 package study.planner.app.plantransaction.repository
 
-import com.querydsl.core.types.Order.*
-import com.querydsl.core.types.OrderSpecifier
-import com.querydsl.core.types.dsl.PathBuilder
 import com.querydsl.jpa.impl.JPAQueryFactory
-import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
-import study.planner.app.plantransaction.PlanTransaction
+import org.springframework.stereotype.Repository
+import study.planner.app.QuerydslFactory
 import study.planner.app.plantransaction.QPlanTransaction.*
 import study.planner.app.plantransaction.dto.PlanTransactionsDto
 import study.planner.app.plantransaction.dto.QPlanTransactionsDto
+import study.planner.app.studyplan.domain.QStudyPlan
+import study.planner.app.studyplan.domain.QStudyPlan.*
 import javax.persistence.EntityManager
 
-
+@Repository
 class PlanTransactionRepositoryImpl(
-
-        private val em: EntityManager,
-        private val queryFactory: JPAQueryFactory = JPAQueryFactory(em)
+        private val queryFactory: JPAQueryFactory
 
 ) : PlanTransactionRepositoryCustom {
 
-    override fun planAvg(studyPlanId: Long): Double {
+    override fun planAvg(studyPlanId: Long): Double? {
         return queryFactory
                 .select(planTransaction.dayFigure.avg())
                 .from(planTransaction)
                 .where(planTransaction.studyPlan.id.eq(studyPlanId))
-                .fetchFirst()
+                .fetchOne()
     }
 
     override fun planTransactions(studyPlanId: Long, pageable: Pageable): List<PlanTransactionsDto> {
-        val query = queryFactory
+        return queryFactory
                 .select(QPlanTransactionsDto(
                         planTransaction.dayFigure,
-                        planTransaction.day
+                        planTransaction.day,
+                        planTransaction.currentFigure,
                 )).from(planTransaction)
+                .join(planTransaction.studyPlan, studyPlan)
                 .where(planTransaction.studyPlan.id.eq(studyPlanId))
                 .offset(pageable.offset)
                 .limit(pageable.pageSize.toLong())
                 .orderBy(planTransaction.day.desc())
-
-        TODO("Not yet implemented")
+                .fetch()
     }
 }

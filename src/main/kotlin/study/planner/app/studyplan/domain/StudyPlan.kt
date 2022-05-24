@@ -69,16 +69,21 @@ class StudyPlan {
         complete()
     }
 
-    fun currentProgress(): Double {
-        return progressCalculate(this.currentFigure.toDouble())
+    fun currentProgress(currentFigure: Int): Double? {
+        return progressCalculate(currentFigure.toDouble())
     }
 
-    fun averageProgress(averageFigure: Double): Double {
+    fun averageProgress(averageFigure: Double?): Double? {
         return progressCalculate(averageFigure)
     }
-    private fun progressCalculate(figure: Double): Double {
-        val progress = figure.div(this.completeFigure).times(100)
-        return (progress * 10).roundToInt().div(10.0)
+
+    fun dayProgress(dayFigure: Int): Double? {
+        return progressCalculate(dayFigure.toDouble())
+    }
+
+    private fun progressCalculate(figure: Double?): Double? {
+        val progress = figure?.div(this.completeFigure)?.times(100)
+        return (progress?.times(10))?.roundToInt()?.div(10.0)
     }
 
     fun restExpectCompleteDate(): Long? {
