@@ -42,7 +42,7 @@ internal class PlanTransactionQueryServiceTest(
         val savedStudyPlan = studyPlanRepository.save(studyPlan)
         for (i in 1..10) {
             val now = i.times(10)
-            planTransactionService.todayStudy(PlanTransactionRequest(savedStudyPlan.id!!, now), LocalDate.of(i, 12, 25))
+            planTransactionService.todayStudy(PlanTransactionRequest(savedStudyPlan.id!!, now, LocalDate.of(i, 12, 25)))
         }
 
         val planTransactions = planTransactionQueryService.planTransactions(savedStudyPlan.id!!, 0)

@@ -24,7 +24,7 @@ class PlanTransactionTest {
     @Test
     fun todayProgressCalculate() {
 
-        val request = PlanTransactionRequest(1L, 10)
+        val request = PlanTransactionRequest(1L, 10, LocalDate. now())
         val planTransaction = PlanTransaction.of(request.dayFigure, studyPlan, LocalDate.now())
 
         val todayProgress = planTransaction.todayProgress(1000)
@@ -35,7 +35,7 @@ class PlanTransactionTest {
     @Test
     @DisplayName("소수점 테스트")
     fun calTest() {
-        val request = PlanTransactionRequest(1L, 21)
+        val request = PlanTransactionRequest(1L, 21, LocalDate.now())
         val planTransaction = PlanTransaction.of(request.dayFigure, studyPlan, LocalDate.now())
 
         val todayProgress = planTransaction.todayProgress(1253)
@@ -46,7 +46,7 @@ class PlanTransactionTest {
     @Test
     @DisplayName("오늘 수치 더하기")
     fun figurePlusTest() {
-        val request = PlanTransactionRequest(1L, 50)
+        val request = PlanTransactionRequest(1L, 50, LocalDate.now())
         val planTransaction = PlanTransaction.of(request.dayFigure, studyPlan, LocalDate.now())
         assertThat(planTransaction.dayFigure).isEqualTo(50)
 

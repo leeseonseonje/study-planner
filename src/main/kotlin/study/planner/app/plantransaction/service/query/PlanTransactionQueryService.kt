@@ -16,9 +16,6 @@ class PlanTransactionQueryService(
         private val planTransactionRepository: PlanTransactionRepository
 ) {
 
-    /**
-     * 내역 조회(리스트, 페이징) -> 날짜, 오늘:100/10% 총:500/1000, 50%
-     */
     fun planTransactions(studyPlanId: Long, page: Int): List<PlanTransactionsResponse?> {
         val studyPlan = studyPlanRepository.findByIdOrNull(studyPlanId)
 
