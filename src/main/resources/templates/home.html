@@ -5,27 +5,29 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<div class="f-container">
-<div class="flex-container">
-    <div th:replace="fragments/bodyHeader :: bodyHeader" />
-
+<div class="full-container">
+    <div class="title-container">
         <h1 style="font-size: 48px">스터디 플래너</h1>
-
-        <div class="form-floating mb-3">
+    </div>
+    <div class="flex-container">
+        <div class="form-floating mb-3" style="width: 500px">
             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">아이디</label>
         </div>
-        <div class="form-floating">
+        <div class="form-floating" style="width: 500px">
             <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">비밀번호</label>
         </div>
 
-        <div class="sub-div">
-            <a class="btn btn-lg btn-primary" href="/login"> 로 그 인 </a>
-            <a class="btn btn-lg btn-primary" href="/member">회원 가입</a>
+        <div style="line-height: 10vh">
+            <a class="btn btn-lg btn-primary" style="width: 500px" href="/login"> 로 그 인 </a>
         </div>
+            <div style="line-height: 0;">
+                <span style="color: #6c757d">회원가입</span>
+            </div>
     </div>
-    </div>
+</div>
+
 </div>
 </div>
 </body>
