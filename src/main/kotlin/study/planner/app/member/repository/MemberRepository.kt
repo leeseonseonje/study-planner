@@ -7,4 +7,6 @@ import java.util.*
 interface MemberRepository : JpaRepository<Member, Long> {
 
     fun existsByEmail(email: String?): Boolean
+
+    fun findByEmail(email: String?): Member?
 }

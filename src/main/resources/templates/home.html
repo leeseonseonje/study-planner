@@ -4,27 +4,38 @@
     <title>스터디 플래너</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
+<style>
+    .fieldError {
+        border-color: #bd2130;
+    }
+</style>
 <body>
 <div class="full-container">
     <div class="title-container">
         <h1 style="font-size: 48px">스터디 플래너</h1>
     </div>
     <div class="flex-container">
-        <div class="form-floating mb-3" style="width: 500px">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">이메일</label>
+        <form role="form" action="/" th:object="${loginRequest}" method="post">
+            <label>이메일</label>
+        <div class="form-group" style="width: 500px">
+            <input type="email" th:field="*{email}" class="form-control" placeholder="이메일"
+                   th:class="${#fields.hasErrors('email')}? 'form-control fieldError' : 'form-control'">
+            <label style="color: #bd2130" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label>
         </div>
-        <div class="form-floating" style="width: 500px">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">비밀번호</label>
+            <label>비밀번호</label>
+        <div class="form-group" style="width: 500px">
+            <input type="password" th:field="*{password}" class="form-control" placeholder="비밀번호"
+                   th:class="${#fields.hasErrors('password')}? 'form-control fieldError' : 'form-control'">
+            <label style="color: #bd2130" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></label>
         </div>
 
         <div style="line-height: 10vh">
-            <a class="btn btn-lg btn-primary" style="width: 500px" href="/login"> 로 그 인 </a>
+            <button type="submit" class="btn btn-lg btn-primary" style="width: 500px" href="/"> 로 그 인 </button>
         </div>
             <div style="line-height: 0;">
                 <a style="color: #6c757d" href="/member">회원가입</a>
             </div>
+        </form>
     </div>
 </div>
 

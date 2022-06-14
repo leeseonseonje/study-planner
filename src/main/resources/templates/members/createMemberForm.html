@@ -33,9 +33,9 @@
 
         <label>비밀번호</label>
         <div class="form-group" style="width: 500px">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="*****"
-                   th:class="${#fields.hasErrors('name')}? 'form-control fieldError' : 'form-control'">
-            <label style="color: #bd2130" th:if="${#fields.hasErrors('name')}" th:errors="*{password}"></label>
+            <input type="password" th:field="*{password}" class="form-control" placeholder="*****"
+                   th:class="${#fields.hasErrors('password')}? 'form-control fieldError' : 'form-control'">
+            <label style="color: #bd2130" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></label>
         </div>
 
 <!--        <label>비밀번호 확인</label>-->
