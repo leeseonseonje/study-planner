@@ -18,14 +18,17 @@ class Member {
 
     var email: String?
 
-    private constructor(name: String?, email: String?) {
+    var password: String?
+
+    private constructor(name: String?, email: String?, password: String?) {
         this.name = name
         this.email = email
+        this.password = password
     }
 
     companion object {
         fun of(request: MemberRequest): Member {
-            return Member(request.name, request.email)
+            return Member(request.name, request.email, request.password)
         }
     }
 }

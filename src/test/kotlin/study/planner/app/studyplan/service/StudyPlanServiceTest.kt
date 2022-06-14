@@ -22,7 +22,7 @@ internal class StudyPlanServiceTest(
 
     @Test
     fun registration() {
-        val member = Member.of(MemberRequest("name", "email"))
+        val member = Member.of(MemberRequest("name", "email", "1234"))
         val savedMember = memberRepository.save(member)
         val request = StudyPlanRegistrationRequest(
                 savedMember.id,

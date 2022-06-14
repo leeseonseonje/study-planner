@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>스터디 플래너</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<style>
+    .fieldError {
+        border-color: #bd2130;
+    }
+</style>
+<body>
+<div class="full-container">
+    <div class="title-container">
+        <h1 style="font-size: 48px">회원가입</h1>
+    </div>
+    <div class="flex-container">
+
+        <form role="form" action="/member" th:object="${memberRequest}" method="post">
+        <label>이름</label>
+        <div class="form-group" style="width: 500px">
+            <input type="text" th:field="*{name}" class="form-control" placeholder="홍길동"
+                   th:class="${#fields.hasErrors('name')}? 'form-control fieldError' : 'form-control'">
+            <label style="color: #bd2130" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label>
+        </div>
+
+        <label>이메일</label>
+        <div class="form-group" style="width: 500px">
+            <input type="email" th:field="*{email}" class="form-control" placeholder="email@example.com"
+                   th:class="${#fields.hasErrors('email')}? 'form-control fieldError' : 'form-control'">
+            <label style="color: #bd2130" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label>
+        </div>
+
+        <label>비밀번호</label>
+        <div class="form-group" style="width: 500px">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="*****"
+                   th:class="${#fields.hasErrors('name')}? 'form-control fieldError' : 'form-control'">
+            <label style="color: #bd2130" th:if="${#fields.hasErrors('name')}" th:errors="*{password}"></label>
+        </div>
+
+<!--        <label>비밀번호 확인</label>-->
+<!--        <div class="form-group" style="width: 500px">-->
+<!--            <input type="password" class="form-control" id="floatingPasswordChecked" placeholder="*****"-->
+<!--                   th:class="${#fields.hasErrors('name')}? 'form-control fieldError' : 'form-control'">-->
+<!--            <label style="color: #bd2130" th:if="${#fields.hasErrors('name')}" th:errors="*{password}">Incorrect date</label>-->
+<!--        </div>-->
+
+        <div style="line-height: 10vh">
+            <button type="submit" class="btn btn-lg btn-primary" style="width: 500px" href="/member">회원가입</button>
+        </div>
+        </form>
+    </div>
+</div>
+
+</div>
+</div>
+</body>
+</html>
