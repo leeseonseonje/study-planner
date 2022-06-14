@@ -20,7 +20,7 @@ class MemberController(
 ) {
 
     @PostMapping("/")
-    fun login(@Valid loginRequest: LoginRequest, result: BindingResult, request: HttpServletRequest): String {
+    fun login(@Valid loginRequest: LoginRequest, result: BindingResult, request: HttpServletRequest, model: Model): String {
 
         if (result.hasErrors()) {
             return "home"
@@ -28,16 +28,16 @@ class MemberController(
 
         val loginMember = memberService.loginCheck(loginRequest)
 
-        return loginCheck(loginMember, request, result)
+        return loginCheck(loginMember, request, model)
     }
 
-    private fun loginCheck(loginMember: Member?, request: HttpServletRequest, result: BindingResult): String {
+    private fun loginCheck(loginMember: Member?, request: HttpServletRequest, model: Model): String {
         if (loginMember != null) {
             val session = request.session
             session.setAttribute("member", loginMember)
             return "test"
         } else {
-            result.addError(ObjectError("login", "아이디 또는 비밀번호가 맞지 않습니다"))
+            model.addAttribute("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.")
             return "home"
         }
     }
