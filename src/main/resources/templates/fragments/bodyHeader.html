@@ -1,8 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<div class="header" th:fragment="bodyHeader">
-    <ul class="nav nav-pills pull-right">
-        <li><a style="font-size: 24px" href="/">Home</a></li>
+<div th:fragment="bodyHeader">
+    <ul class="nav justify-content-end">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Dropdown</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
+            </ul>
+        </li>
     </ul>
-<!--    <a href="/"><h3 class="text-muted">Study Planner</h3></a>-->
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="/">StudyPlanner</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/">계획 등록하기</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/">공부중인 계획들</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/">완료한 계획들</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/">마이 페이지</a>
+        </li>
+    </ul>
 </div>
+</html>
