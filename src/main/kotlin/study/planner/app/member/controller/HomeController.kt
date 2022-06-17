@@ -13,7 +13,8 @@ class HomeController {
     @GetMapping("/")
     fun home(@SessionAttribute(name = "member", required = false) member: Member?, model: Model): String {
         if (member != null) {
-            return "test"
+            model.addAttribute("memberName", member.name)
+            return "main"
         }
         model.addAttribute("loginRequest", LoginRequest(null, null))
         return "home"

@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<div th:fragment="bodyHeader">
-    <ul class="nav justify-content-end">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Dropdown</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
+<div th:fragment="bodyHeader" style="margin-top: 15px; margin-left: 10px">
+
+        <div class="dropdown" style="float: right; margin-right: 10px">
+            <button class="btn btn-success dropdown-toggle" type="button" th:text="${memberName}"
+                    id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item text-success" href="#">마이페이지</a></li>
+                <li><a class="dropdown-item text-success" href="/logout
+">로그아웃</a></li>
             </ul>
-        </li>
-    </ul>
+    </div>
+
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link active" href="/">StudyPlanner</a>
+            <a class="nav-link active text-success" href="/">StudyPlanner</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/">계획 등록하기</a>
+            <a class="nav-link text-secondary" href="/">계획 등록하기</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/">공부중인 계획들</a>
+            <a class="nav-link text-secondary" href="/">공부중인 계획들</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/">완료한 계획들</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/">마이 페이지</a>
+            <a class="nav-link text-secondary" href="/">완료한 계획들</a>
         </li>
     </ul>
 </div>

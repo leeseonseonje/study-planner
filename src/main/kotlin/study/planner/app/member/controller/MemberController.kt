@@ -19,29 +19,6 @@ class MemberController(
         private val memberService: MemberService
 ) {
 
-    @PostMapping("/")
-    fun login(@Valid loginRequest: LoginRequest, result: BindingResult, request: HttpServletRequest, model: Model): String {
-
-        if (result.hasErrors()) {
-            return "home"
-        }
-
-        val loginMember = memberService.loginCheck(loginRequest)
-
-        return loginCheck(loginMember, request, model)
-    }
-
-    private fun loginCheck(loginMember: Member?, request: HttpServletRequest, model: Model): String {
-        if (loginMember != null) {
-            val session = request.session
-            session.setAttribute("member", loginMember)
-            return "test"
-        } else {
-            model.addAttribute("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.")
-            return "home"
-        }
-    }
-
     @GetMapping("/member")
     fun save(model: Model): String {
         model.addAttribute("memberRequest", MemberRequest(null, null, null))
