@@ -5,6 +5,7 @@ import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.SessionAttribute
 import study.planner.app.member.Member
 import study.planner.app.member.dto.LoginRequest
 import study.planner.app.member.service.MemberService
@@ -16,6 +17,16 @@ class LoginController(
 
         private val memberService: MemberService
 ) {
+
+    @GetMapping("/")
+    fun home(@SessionAttribute(name = "member", required = false) member: Member?, model: Model): String {
+        if (member != null) {
+            model.addAttribute("memberName", member.name)
+            return "main"
+        }
+        model.addAttribute("loginRequest", LoginRequest(null, null))
+        return "home"
+    }
 
     @PostMapping("/")
     fun login(@Valid loginRequest: LoginRequest, result: BindingResult, request: HttpServletRequest, model: Model): String {
