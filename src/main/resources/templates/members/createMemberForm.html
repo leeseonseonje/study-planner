@@ -32,7 +32,7 @@
         </div>
 
         <label>비밀번호</label>
-        <div class="form-group" style="width: 500px; margin-bottom: 30px">
+        <div class="form-group" style="width: 500px">
             <input type="password" th:field="*{password}" class="form-control" placeholder="*****"
                    th:class="${#fields.hasErrors('password')}? 'form-control fieldError' : 'form-control'">
             <label style="color: #bd2130" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></label>

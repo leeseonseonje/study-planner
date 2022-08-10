@@ -21,7 +21,7 @@ data class StudyPlansResponse(
                         studyPlan.content,
                         studyPlan.currentFigure,
                         studyPlan.completeFigure,
-                        studyPlan.currentProgress(studyPlan.currentFigure),
+                        studyPlan.progressConverter(studyPlan.currentFigure),
                         studyPlan.restExpectCompleteDate(),
                         studyPlan.status
                 )

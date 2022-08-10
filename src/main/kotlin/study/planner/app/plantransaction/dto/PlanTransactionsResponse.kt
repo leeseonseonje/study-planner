@@ -17,10 +17,10 @@ data class PlanTransactionsResponse(
                 return PlanTransactionsResponse(
                         dto.date,
                         dto.dayFigure,
-                        it.dayProgress(dto.dayFigure),
+                        it.progressConverter(dto.dayFigure),
                         dto.currentFigure,
                         it.completeFigure,
-                        it.currentProgress(dto.currentFigure)
+                        it.progressConverter(dto.currentFigure)
                 )
             }
             return null

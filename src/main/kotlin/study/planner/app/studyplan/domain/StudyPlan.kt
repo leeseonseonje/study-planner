@@ -69,16 +69,12 @@ class StudyPlan {
         complete()
     }
 
-    fun currentProgress(currentFigure: Int): Double? {
-        return progressCalculate(currentFigure.toDouble())
+    fun progressConverter(figure: Int?): Double? {
+        return progressCalculate(figure?.toDouble())
     }
 
-    fun averageProgress(averageFigure: Double?): Double? {
-        return progressCalculate(averageFigure)
-    }
-
-    fun dayProgress(dayFigure: Int): Double? {
-        return progressCalculate(dayFigure.toDouble())
+    fun progressConverter(figure: Double?): Double? {
+        return progressCalculate(figure)
     }
 
     private fun progressCalculate(figure: Double?): Double? {

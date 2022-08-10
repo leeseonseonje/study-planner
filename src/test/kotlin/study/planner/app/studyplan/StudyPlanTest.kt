@@ -32,7 +32,7 @@ class StudyPlanTest {
 
         val studyPlan = StudyPlan.of(r, null)
         studyPlan.currentFigureCalculate(100)
-        assertThat(studyPlan.currentProgress(studyPlan.currentFigure)).isEqualTo(10.0)
+        assertThat(studyPlan.progressConverter(studyPlan.currentFigure)).isEqualTo(10.0)
     }
 
     @Test
@@ -41,7 +41,7 @@ class StudyPlanTest {
                 LocalDate.now())
 
         val studyPlan = StudyPlan.of(r, null)
-        val averageProgress = studyPlan.averageProgress(10.0)
+        val averageProgress = studyPlan.progressConverter(10.0)
         assertThat(averageProgress).isEqualTo(1.0)
     }
 
@@ -51,7 +51,7 @@ class StudyPlanTest {
                 LocalDate.now())
 
         val studyPlan = StudyPlan.of(r, null)
-        val dayProgress = studyPlan.dayProgress(500)
+        val dayProgress = studyPlan.progressConverter(500)
         assertThat(dayProgress).isEqualTo(50.0)
     }
 

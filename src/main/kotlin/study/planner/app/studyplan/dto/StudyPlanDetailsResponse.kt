@@ -30,14 +30,14 @@ data class StudyPlanDetailsResponse(
                         it.content,
                         it.currentFigure,
                         it.completeFigure,
-                        it.currentProgress(it.currentFigure),
+                        it.progressConverter(it.currentFigure),
                         it.restExpectCompleteDate(),
                         it.expectCompleteDate,
                         it.status,
                         it.registrationDate,
                         it.afterStartDate(),
                         planAvg,
-                        it.averageProgress(planAvg)
+                        it.progressConverter(planAvg)
                 )
             }
             return null
