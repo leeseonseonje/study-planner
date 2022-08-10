@@ -32,27 +32,24 @@
         </div>
 
         <label>비밀번호</label>
-        <div class="form-group" style="width: 500px">
+        <div class="form-group" style="width: 500px; margin-bottom: 30px">
             <input type="password" th:field="*{password}" class="form-control" placeholder="*****"
                    th:class="${#fields.hasErrors('password')}? 'form-control fieldError' : 'form-control'">
             <label style="color: #bd2130" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></label>
         </div>
 
-<!--        <label>비밀번호 확인</label>-->
-<!--        <div class="form-group" style="width: 500px">-->
-<!--            <input type="password" class="form-control" id="floatingPasswordChecked" placeholder="*****"-->
-<!--                   th:class="${#fields.hasErrors('name')}? 'form-control fieldError' : 'form-control'">-->
-<!--            <label style="color: #bd2130" th:if="${#fields.hasErrors('name')}" th:errors="*{password}">Incorrect date</label>-->
-<!--        </div>-->
+        <label>비밀번호 확인</label>
+        <div class="form-group" style="width: 500px">
+            <input type="password" class="form-control" id="floatingPasswordChecked" placeholder="*****"
+                   th:class="${#fields.hasErrors('name')}? 'form-control fieldError' : 'form-control'">
+            <label style="color: #bd2130" th:if="${#fields.hasErrors('name')}" th:errors="*{password}"></label>
+        </div>
 
         <div style="line-height: 10vh">
             <button type="submit" class="btn btn-lg btn-success" style="width: 500px" href="/member">회원가입</button>
         </div>
         </form>
     </div>
-</div>
-
-</div>
 </div>
 </body>
 </html>

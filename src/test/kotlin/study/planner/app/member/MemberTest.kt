@@ -15,7 +15,7 @@ internal class MemberTest(
 
     @Test
     fun test() {
-        val request = MemberRequest("seon", "leeseonje9323@gmail.com", "1234")
+        val request = MemberRequest("seon", "leeseonje9323@gmail.com", "1234", "1234")
         val member = Member.of(request)
         println(member.name)
         println(member.email)

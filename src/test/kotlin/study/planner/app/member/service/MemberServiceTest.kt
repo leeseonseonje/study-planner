@@ -17,8 +17,8 @@ internal class MemberServiceTest(
 
     @Test
     fun duplicationsTest() {
-        val requestA = MemberRequest("memberA", "leeseonseonje9323@gmail.com", "1234")
-        val requestB = MemberRequest("memberA", "leeseonseonje9323@gmail.com", "1234")
+        val requestA = MemberRequest("memberA", "leeseonseonje9323@gmail.com", "1234", "1234")
+        val requestB = MemberRequest("memberA", "leeseonseonje9323@gmail.com", "1234", "1234")
 
         memberService.save(requestA)
 

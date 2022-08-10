@@ -11,6 +11,6 @@ class WebConfig : WebMvcConfigurer {
         registry.addInterceptor(LoginCheckInterceptor())
                 .order(1)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/", "/members", "/login", "/logout", "/css/**", "/*.ico", "/error")
+                .excludePathPatterns("/", "/member", "/login", "/logout", "/css/**", "/*.ico", "/error")
     }
 }
