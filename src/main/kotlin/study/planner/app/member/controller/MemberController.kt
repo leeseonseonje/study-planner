@@ -17,7 +17,7 @@ class MemberController(
     @GetMapping("/member")
     fun save(model: Model): String {
         println("save")
-        model.addAttribute("memberRequest", MemberRequest(null, null, null, null))
+        model.addAttribute("memberRequest", MemberRequest(null, null, null))
         return "members/createMemberForm"
     }
 

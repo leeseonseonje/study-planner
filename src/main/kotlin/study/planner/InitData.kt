@@ -28,7 +28,7 @@ class InitData(
         ) {
 
                 fun init() {
-                        val member = Member.of(MemberRequest("선제", "leeseonje9323@gmail.com", "1234", "1234"))
+                        val member = Member.of(MemberRequest("선제", "leeseonje9323@gmail.com", "1234"))
                         em.persist(member)
 
                         em.flush()

@@ -9,6 +9,4 @@ data class MemberRequest(
         var email: String?,
         @field:NotEmpty(message = "비밀번호를 입력해 주세요.")
         var password: String?,
-        @field:NotEmpty(message = "비밀번호를 입력해 주세요.")
-        var checkPassword: String?,
 )
