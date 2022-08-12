@@ -8,7 +8,7 @@ data class StudyPlansResponse(
         val title: String?,
         val content: String?,
         val currentFigure: Int,
-        val completeFigure: Int,
+        val completeFigure: Int?,
         val currentProgress: Double?,
         val expectCompleteRestDate: Long?,
         val status: PlanStatus

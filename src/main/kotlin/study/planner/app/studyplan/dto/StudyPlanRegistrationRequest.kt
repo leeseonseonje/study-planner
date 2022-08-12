@@ -1,14 +1,22 @@
 package study.planner.app.studyplan.dto
 
+import org.springframework.format.annotation.DateTimeFormat
 import java.time.LocalDate
-import javax.validation.constraints.NotEmpty
+import javax.validation.constraints.*
 
 data class StudyPlanRegistrationRequest(
+
         var memberId: Long?,
+
         @field:NotEmpty(message = "제목을 입력해 주세요.")
         var title: String?,
+
         var content: String?,
-        @field:NotEmpty(message = "목표를 입력해 주세요.")
-        var completeFigure: Int,
+
+        @field:Min(value = 1, message = "1이상의 값을 입력해주세요.")
+        @field:NotNull(message = "목표를 입력해 주세요.")
+        var completeFigure: Int?,
+
+        @DateTimeFormat(pattern = "yyyy-MM-dd")
         var expectCompleteDate: LocalDate?
 )

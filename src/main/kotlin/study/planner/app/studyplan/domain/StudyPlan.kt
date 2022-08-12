@@ -27,7 +27,7 @@ class StudyPlan {
 
     var currentFigure: Int
 
-    var completeFigure: Int
+    var completeFigure: Int?
 
     var expectCompleteDate: LocalDate?
 
@@ -37,7 +37,7 @@ class StudyPlan {
 
     var status: PlanStatus
 
-    private constructor(member: Member?, title: String?, content: String?, currentFigure: Int, completeFigure: Int, expectCompleteDate: LocalDate?, registrationDate: LocalDate, completeDate: LocalDate?, status: PlanStatus) {
+    private constructor(member: Member?, title: String?, content: String?, currentFigure: Int, completeFigure: Int?, expectCompleteDate: LocalDate?, registrationDate: LocalDate, completeDate: LocalDate?, status: PlanStatus) {
         this.member = member
         this.title = title
         this.content = content
@@ -78,7 +78,7 @@ class StudyPlan {
     }
 
     private fun progressCalculate(figure: Double?): Double? {
-        val progress = figure?.div(this.completeFigure)?.times(100)
+        val progress = this.completeFigure?.let { figure?.div(it)?.times(100) }
         return (progress?.times(10))?.roundToInt()?.div(10.0)
     }
 
@@ -94,7 +94,7 @@ class StudyPlan {
     }
 
     private fun complete() {
-        if (currentFigure >= completeFigure) {
+        if (currentFigure >= completeFigure!!) {
             this.status = COMPLETE
         }
     }

@@ -12,26 +12,28 @@
 <body>
 <div class="full-container">
     <div class="title-container">
-        <h1 style="font-size: 48px" class="text-secondary">회원가입</h1>
+        <h1 style="font-size: 48px" class="text-secondary">계획 등록</h1>
     </div>
     <div class="flex-container">
 
-        <form role="form" action="/studyPlan" th:object="${studyPlan}" method="post">
+        <form role="form" action="/study-plan" th:object="${studyPlan}" method="post">
+            <input type="hidden" th:field="*{memberId}" id="memberId">
+
             <label>제목</label>
             <div class="form-group" style="width: 500px; margin-bottom: 30px">
-                <input type="text" th:field="*{title}" class="form-control" placeholder="realMySQL"
+                <input type="text" th:field="*{title}" class="form-control" placeholder="제목"
                        th:class="${#fields.hasErrors('title')}? 'form-control fieldError' : 'form-control'">
                 <label style="color: #bd2130" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></label>
             </div>
 
             <label>내용</label>
             <div class="form-group" style="width: 500px; margin-bottom: 30px">
-                <input type="email" th:field="*{content}" class="form-control" placeholder="email@example.com">
+                <input type="text" th:field="*{content}" class="form-control" placeholder="내용">
             </div>
 
             <label>목표</label>
             <div class="form-group" style="width: 500px; margin-bottom: 30px">
-                <input type="password" th:field="*{completeFigure}" class="form-control" placeholder="1000"
+                <input type="text" th:field="*{completeFigure}" class="form-control" placeholder="목표량"
                        th:class="${#fields.hasErrors('completeFigure')}? 'form-control fieldError' : 'form-control'">
                 <label style="color: #bd2130" th:if="${#fields.hasErrors('completeFigure')}"
                        th:errors="*{completeFigure}"></label>
@@ -39,11 +41,11 @@
 
             <label>목표달성 기간</label>
             <div class="form-group" style="width: 500px">
-                <input type="password" th:field="*{expectCompleteDate}" class="form-control" placeholder="1000">
+                <input type="date" th:field="*{expectCompleteDate}" class="form-control">
             </div>
 
             <div style="line-height: 10vh">
-                <button type="submit" class="btn btn-lg btn-success" style="width: 500px" href="/member">등록</button>
+                <button type="submit" class="btn btn-lg btn-success" style="width: 500px">등록</button>
             </div>
         </form>
     </div>

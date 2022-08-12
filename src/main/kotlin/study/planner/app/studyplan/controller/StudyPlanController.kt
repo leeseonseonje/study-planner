@@ -2,12 +2,11 @@ package study.planner.app.studyplan.controller
 
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.validation.BindingResult
+import org.springframework.web.bind.annotation.*
 import study.planner.app.studyplan.dto.StudyPlanRegistrationRequest
 import study.planner.app.studyplan.service.StudyPlanService
+import javax.validation.Valid
 
 @Controller
 @RequestMapping("/study-plan")
@@ -18,7 +17,6 @@ class StudyPlanController(
 
     @GetMapping("/{memberId}")
     fun studyPlanRegistrationForm(model: Model, @PathVariable memberId: Long): String {
-        println("studyPlan")
         val request = StudyPlanRegistrationRequest(memberId, null, null, 0, null)
         model.addAttribute("studyPlan", request)
 
@@ -26,7 +24,14 @@ class StudyPlanController(
     }
 
     @PostMapping("")
-    fun studyPlanRegistration(request: StudyPlanRegistrationRequest) {
+    fun studyPlanRegistration(@Valid @ModelAttribute("studyPlan") request: StudyPlanRegistrationRequest,
+                              result:BindingResult): String {
+
+        if (result.hasErrors()) {
+            return "studyplans/createStudyPlanForm"
+        }
+
         studyPlanService.studyPlanRegistration(request)
+        return ""
     }
 }

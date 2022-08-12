@@ -11,7 +11,7 @@ data class StudyPlanDetailsResponse(
         val title: String?,
         val content: String?,
         val currentFigure: Int,
-        val completeFigure: Int,
+        val completeFigure: Int?,
         val currentProgress: Double?,
         val expectCompleteRestDate: Long?,
         val expectCompleteDate: LocalDate?,

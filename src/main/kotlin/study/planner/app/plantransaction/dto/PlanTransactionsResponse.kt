@@ -8,7 +8,7 @@ data class PlanTransactionsResponse(
         val dayFigure: Int,
         val dayProgress: Double?,
         val currentFigure: Int,
-        val completeFigure: Int,
+        val completeFigure: Int?,
         val currentProgress: Double?
 ) {
     companion object {
