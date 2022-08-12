@@ -17,6 +17,7 @@ data class StudyPlanRegistrationRequest(
         @field:NotNull(message = "목표를 입력해 주세요.")
         var completeFigure: Int?,
 
-        @DateTimeFormat(pattern = "yyyy-MM-dd")
+        @field:DateTimeFormat(pattern = "yyyy-MM-dd")
+        @field:NotNull(message = "날짜를 입력해 주세요.")
         var expectCompleteDate: LocalDate?
 )

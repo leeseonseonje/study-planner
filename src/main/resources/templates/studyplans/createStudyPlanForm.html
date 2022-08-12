@@ -41,7 +41,10 @@
 
             <label>목표달성 기간</label>
             <div class="form-group" style="width: 500px">
-                <input type="date" th:field="*{expectCompleteDate}" class="form-control">
+                <input type="date" th:field="*{expectCompleteDate}" class="form-control"
+                       th:class="${#fields.hasErrors('expectCompleteDate')}? 'form-control fieldError' : 'form-control'">
+                <label style="color: #bd2130" th:if="${#fields.hasErrors('expectCompleteDate')}"
+                       th:errors="*{expectCompleteDate}"></label>
             </div>
 
             <div style="line-height: 10vh">
