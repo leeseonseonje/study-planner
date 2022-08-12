@@ -20,14 +20,13 @@ class MemberController(
 ) {
 
     @GetMapping("/member")
-    fun save(model: Model): String {
-        model.addAttribute("memberRequest", MemberRequest(null, null, null))
+    fun createMemberForm(model: Model): String {
+        model.addAttribute("member", MemberRequest(null, null, null))
         return "members/createMemberForm"
     }
 
     @PostMapping("/member")
-    fun save(@Valid request: MemberRequest, result: BindingResult): String {
-
+    fun createMember(@Valid request: MemberRequest, result: BindingResult): String {
         if (result.hasErrors()) {
             return "members/createMemberForm"
         }

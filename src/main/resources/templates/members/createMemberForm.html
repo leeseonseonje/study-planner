@@ -16,7 +16,7 @@
     </div>
     <div class="flex-container">
 
-        <form role="form" action="/member" th:object="${memberRequest}" method="post">
+        <form role="form" action="/member" th:object="${member}" method="post">
         <label>이름</label>
         <div class="form-group" style="width: 500px; margin-bottom: 30px">
             <input type="text" th:field="*{name}" class="form-control" placeholder="홍길동"

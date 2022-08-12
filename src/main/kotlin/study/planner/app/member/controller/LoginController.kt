@@ -21,11 +21,9 @@ class LoginController(
     @GetMapping("/")
     fun home(@SessionAttribute(name = "member", required = false) member: Member?, model: Model): String {
         if (member != null) {
-            model.addAttribute("memberName", member.name)
-            return "main"
+            return modelAddMember(model, member)
         }
-        model.addAttribute("loginRequest", LoginRequest(null, null))
-        return "home"
+        return notLogin(model)
     }
 
     @PostMapping("/")
@@ -44,17 +42,26 @@ class LoginController(
         return if (loginMember != null) {
             val session = request.session
             session.setAttribute("member", loginMember)
-            model.addAttribute("memberName", loginMember.name)
-            "main"
+            modelAddMember(model, loginMember)
         } else {
-            model.addAttribute("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.")
-            "home"
+            notLogin(model)
         }
+    }
+
+    private fun modelAddMember(model: Model, member: Member): String {
+        model.addAttribute("memberName", member.name)
+        model.addAttribute("memberId", member.id)
+        return "main"
     }
 
     @GetMapping("/logout")
     fun logout(request: HttpServletRequest, model: Model): String {
         request.session.invalidate()
+        notLogin(model)
+        return "home"
+    }
+
+    private fun notLogin(model: Model): String {
         model.addAttribute("loginRequest", LoginRequest(null, null))
         return "home"
     }
