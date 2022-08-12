@@ -20,9 +20,9 @@ internal class MemberServiceTest(
         val requestA = MemberRequest("memberA", "leeseonseonje9323@gmail.com", "1234")
         val requestB = MemberRequest("memberA", "leeseonseonje9323@gmail.com", "1234")
 
-        memberService.save(requestA)
+        memberService.join(requestA)
 
-        Assertions.assertThatThrownBy {memberService.save(requestB)}.isInstanceOf(IllegalStateException::class.java)
+        Assertions.assertThatThrownBy {memberService.join(requestB)}.isInstanceOf(IllegalStateException::class.java)
 
     }
 }

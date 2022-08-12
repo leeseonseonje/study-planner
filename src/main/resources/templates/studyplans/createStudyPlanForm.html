@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header">
     <title>스터디 플래너</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <style>
     .fieldError {
@@ -12,14 +12,41 @@
 <body>
 <div class="full-container">
     <div class="title-container">
-        <h1 style="font-size: 48px" class="text-secondary">계획 등록하기</h1>
+        <h1 style="font-size: 48px" class="text-secondary">회원가입</h1>
     </div>
     <div class="flex-container">
 
-    </div>
-</div>
+        <form role="form" action="/studyPlan" th:object="${studyPlan}" method="post">
+            <label>제목</label>
+            <div class="form-group" style="width: 500px; margin-bottom: 30px">
+                <input type="text" th:field="*{title}" class="form-control" placeholder="realMySQL"
+                       th:class="${#fields.hasErrors('title')}? 'form-control fieldError' : 'form-control'">
+                <label style="color: #bd2130" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></label>
+            </div>
 
-</div>
+            <label>내용</label>
+            <div class="form-group" style="width: 500px; margin-bottom: 30px">
+                <input type="email" th:field="*{content}" class="form-control" placeholder="email@example.com">
+            </div>
+
+            <label>목표</label>
+            <div class="form-group" style="width: 500px; margin-bottom: 30px">
+                <input type="password" th:field="*{completeFigure}" class="form-control" placeholder="1000"
+                       th:class="${#fields.hasErrors('completeFigure')}? 'form-control fieldError' : 'form-control'">
+                <label style="color: #bd2130" th:if="${#fields.hasErrors('completeFigure')}"
+                       th:errors="*{completeFigure}"></label>
+            </div>
+
+            <label>목표달성 기간</label>
+            <div class="form-group" style="width: 500px">
+                <input type="password" th:field="*{expectCompleteDate}" class="form-control" placeholder="1000">
+            </div>
+
+            <div style="line-height: 10vh">
+                <button type="submit" class="btn btn-lg btn-success" style="width: 500px" href="/member">등록</button>
+            </div>
+        </form>
+    </div>
 </div>
 </body>
 </html>

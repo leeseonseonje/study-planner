@@ -18,10 +18,11 @@ class StudyPlanController(
 
     @GetMapping("/{memberId}")
     fun studyPlanRegistrationForm(model: Model, @PathVariable memberId: Long): String {
-        val request = StudyPlanRegistrationRequest(null, null, null, 0, null)
+        println("studyPlan")
+        val request = StudyPlanRegistrationRequest(memberId, null, null, 0, null)
         model.addAttribute("studyPlan", request)
 
-        return ""
+        return "studyplans/createStudyPlanForm"
     }
 
     @PostMapping("")

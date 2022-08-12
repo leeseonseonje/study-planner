@@ -15,7 +15,7 @@ class MemberService(
         private val memberRepository: MemberRepository
 ) {
 
-    fun save(request: MemberRequest) {
+    fun join(request: MemberRequest) {
         duplicationValidationEmail(request.email)
         val member = Member.of(request)
         memberRepository.save(member)

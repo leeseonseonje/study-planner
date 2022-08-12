@@ -57,8 +57,7 @@ class LoginController(
     @GetMapping("/logout")
     fun logout(request: HttpServletRequest, model: Model): String {
         request.session.invalidate()
-        notLogin(model)
-        return "home"
+        return notLogin(model)
     }
 
     private fun notLogin(model: Model): String {

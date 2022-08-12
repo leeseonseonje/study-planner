@@ -13,15 +13,15 @@ class StudyPlanQueryController(
         private val studyPlanQueryService: StudyPlanQueryService
 ) {
 
-    @GetMapping("/study-plans/{memberId}")
-    fun studyPlans(@PathVariable memberId: Long): List<StudyPlansResponse> {
-        return studyPlanQueryService.studyPlans(memberId)
-    }
+//    @GetMapping("/study-plans/{memberId}")
+//    fun studyPlans(@PathVariable memberId: Long): List<StudyPlansResponse> {
+//        return studyPlanQueryService.studyPlans(memberId)
+//    }
 
-    @GetMapping("/study-plan/{studyPlanId}")
-    fun studyPlanDetails(@PathVariable studyPlanId: Long): StudyPlanDetailsResponse? {
-        return studyPlanQueryService.studyPlanDetails(studyPlanId)
-    }
+//    @GetMapping("/study-plan/{studyPlanId}")
+//    fun studyPlanDetails(@PathVariable studyPlanId: Long): StudyPlanDetailsResponse? {
+//        return studyPlanQueryService.studyPlanDetails(studyPlanId)
+//    }
 
 
 }
