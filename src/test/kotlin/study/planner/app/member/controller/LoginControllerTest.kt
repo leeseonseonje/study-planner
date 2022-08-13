@@ -1,6 +1,5 @@
 package study.planner.app.member.controller
 
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -13,7 +12,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers.*
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 import study.planner.app.member.Member
-import study.planner.app.member.dto.LoginRequest
 import study.planner.app.member.dto.MemberRequest
 
 @SpringBootTest
