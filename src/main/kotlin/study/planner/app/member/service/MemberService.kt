@@ -1,13 +1,11 @@
 package study.planner.app.member.service
 
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import study.planner.app.member.Member
 import study.planner.app.member.dto.LoginRequest
 import study.planner.app.member.dto.MemberRequest
 import study.planner.app.member.repository.MemberRepository
-import javax.servlet.http.HttpServletRequest
 
 @Service
 @Transactional

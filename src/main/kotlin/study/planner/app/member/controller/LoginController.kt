@@ -21,14 +21,13 @@ class LoginController(
     @GetMapping("/")
     fun home(@SessionAttribute(name = "member", required = false) member: Member?, model: Model): String {
         if (member != null) {
-            return modelAddMember(model, member)
+            return alreadyLogin(model, member)
         }
         return notLogin(model)
     }
 
     @PostMapping("/")
     fun login(@Valid loginRequest: LoginRequest, result: BindingResult, request: HttpServletRequest, model: Model): String {
-
         if (result.hasErrors()) {
             return "home"
         }
@@ -42,13 +41,13 @@ class LoginController(
         return if (loginMember != null) {
             val session = request.session
             session.setAttribute("member", loginMember)
-            modelAddMember(model, loginMember)
+            alreadyLogin(model, loginMember)
         } else {
             notLogin(model)
         }
     }
 
-    private fun modelAddMember(model: Model, member: Member): String {
+    private fun alreadyLogin(model: Model, member: Member): String {
         model.addAttribute("memberName", member.name)
         model.addAttribute("memberId", member.id)
         return "main"

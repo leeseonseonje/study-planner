@@ -10,6 +10,7 @@
     }
 </style>
 <body>
+<div th:replace="fragments/bodyHeader :: bodyHeader"></div>
 <div class="full-container">
     <div class="title-container">
         <h1 style="font-size: 48px" class="text-secondary">계획 등록</h1>
@@ -23,7 +24,7 @@
             <div class="form-group" style="width: 500px; margin-bottom: 30px">
                 <input type="text" th:field="*{title}" class="form-control" placeholder="제목"
                        th:class="${#fields.hasErrors('title')}? 'form-control fieldError' : 'form-control'">
-                <label style="color: #bd2130" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></label>
+                <label class="fieldError" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></label>
             </div>
 
             <label>내용</label>
@@ -35,7 +36,7 @@
             <div class="form-group" style="width: 500px; margin-bottom: 30px">
                 <input type="text" th:field="*{completeFigure}" class="form-control" placeholder="목표량"
                        th:class="${#fields.hasErrors('completeFigure')}? 'form-control fieldError' : 'form-control'">
-                <label style="color: #bd2130" th:if="${#fields.hasErrors('completeFigure')}"
+                <label class="fieldError" th:if="${#fields.hasErrors('completeFigure')}"
                        th:errors="*{completeFigure}"></label>
             </div>
 
@@ -43,7 +44,7 @@
             <div class="form-group" style="width: 500px">
                 <input type="date" th:field="*{expectCompleteDate}" class="form-control"
                        th:class="${#fields.hasErrors('expectCompleteDate')}? 'form-control fieldError' : 'form-control'">
-                <label style="color: #bd2130" th:if="${#fields.hasErrors('expectCompleteDate')}"
+                <label class="fieldError" th:if="${#fields.hasErrors('expectCompleteDate')}"
                        th:errors="*{expectCompleteDate}"></label>
             </div>
 

@@ -17,16 +17,18 @@
     <div class="flex-container">
         <form role="form" action="/" th:object="${loginRequest}" method="post">
 
-        <div class="form-floating mb-3" style="width: 500px">
+            <label>이메일</label>
+        <div class="form-floating" style="width: 500px; margin-bottom: 30px">
             <input type="email" th:field="*{email}" class="form-control" placeholder="이메일" id="floatingEmail"
                    th:class="${#fields.hasErrors('email')}? 'form-control fieldError' : 'form-control'">
-            <label for="floatingEmail">이메일</label>
+            <label for="floatingEmail" class="fieldError" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label>
         </div>
 
+            <label>비밀번호</label>
         <div class="form-floating" style="width: 500px">
             <input type="password" th:field="*{password}" class="form-control" id="floatingPassword" placeholder="비밀번호"
                    th:class="${#fields.hasErrors('password')}? 'form-control fieldError' : 'form-control'">
-            <label for="floatingPassword">비밀번호</label>
+            <label for="floatingPassword" class="fieldError" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></label>
         </div>
 
         <div style="line-height: 10vh">
