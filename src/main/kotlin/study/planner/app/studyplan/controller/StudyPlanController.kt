@@ -50,6 +50,6 @@ class StudyPlanController(
         }
 
         studyPlanService.studyPlanRegistration(request)
-        return "/studyplans/studyPlans"
+        return "main"
     }
 }

@@ -37,7 +37,7 @@ internal class StudyPlanControllerTest(
                         .session(session))
                 .andDo(print())
                 .andExpect(status().isOk)
-                .andExpect(view().name("/studyplans/createStudyPlanForm"))
+                .andExpect(view().name("studyplans/createStudyPlanForm"))
     }
 
     @Test
@@ -52,7 +52,7 @@ internal class StudyPlanControllerTest(
                         .param("expectCompleteDate", "9999-12-31"))
                 .andDo(print())
                 .andExpect(status().isOk)
-                .andExpect(view().name("studyplans/studyPlans"))
+                .andExpect(view().name("main"))
     }
 
     @Test

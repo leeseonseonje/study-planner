@@ -1,4 +1,4 @@
-package study.planner.app.web
+package study.planner.web
 
 import org.springframework.web.servlet.HandlerInterceptor
 import javax.servlet.http.HttpServletRequest
