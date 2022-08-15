@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>스터디 플래너</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div th:replace="fragments/studyPlansBodyHeader :: bodyHeader"></div>
+<div class="full-container">
+    <div class="title-container">
+        <h1 style="font-size: 48px" class="text-secondary">공부중인 계획들</h1>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">title</th>
+            <th scope="col">content</th>
+            <th scope="col">figure</th>
+            <th scope="col">progress</th>
+            <th scope="col">restDate</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry the Bird</td>
+            <td>@twitter</td>
+            <td>@twitter</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

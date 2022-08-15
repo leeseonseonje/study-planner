@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import study.planner.app.member.repository.MemberRepository
 import study.planner.app.plantransaction.repository.PlanTransactionRepository
+import study.planner.app.studyplan.domain.PlanStatus
 import study.planner.app.studyplan.dto.StudyPlanDetailsResponse
 import study.planner.app.studyplan.dto.StudyPlansResponse
 import study.planner.app.studyplan.repository.StudyPlanRepository
@@ -21,7 +22,7 @@ class StudyPlanQueryService(
     fun studyPlans(memberId: Long): List<StudyPlansResponse> {
         val member = memberRepository.findByIdOrNull(memberId)
 
-        val studyPlans = studyPlanRepository.findByMember(member)
+        val studyPlans = studyPlanRepository.findByMemberAndStatus(member, PlanStatus.ING)
 
         return studyPlans.stream().map { StudyPlansResponse.toDto(it) }.toList()
     }

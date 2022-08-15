@@ -5,6 +5,7 @@ import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
 import org.springframework.validation.FieldError
 import org.springframework.web.bind.annotation.*
+import study.planner.app.member.repository.MemberRepository
 import study.planner.app.studyplan.dto.StudyPlanRegistrationRequest
 import study.planner.app.studyplan.service.StudyPlanService
 import java.time.LocalDate
@@ -15,11 +16,19 @@ import javax.validation.Valid
 class StudyPlanController(
 
         private val studyPlanService: StudyPlanService,
+        private val memberRepository: MemberRepository,
 ) {
 
     @GetMapping("/{memberId}")
-    fun studyPlanRegistrationForm(@PathVariable memberId: Long, model: Model): String {
-        val request = StudyPlanRegistrationRequest(memberId, null, null, 0, null)
+    fun studyPlanRegistrationForm(model: Model, @PathVariable memberId: Long): String {
+
+        val findMember = memberRepository.findById(memberId).get()
+
+        val request = StudyPlanRegistrationRequest(memberId, null, null,
+                0, null)
+
+        model.addAttribute("memberName", findMember.name)
+        model.addAttribute("memberId", memberId)
         model.addAttribute("studyPlan", request)
 
         return "studyplans/createStudyPlanForm"
@@ -41,6 +50,6 @@ class StudyPlanController(
         }
 
         studyPlanService.studyPlanRegistration(request)
-        return "main"
+        return "/studyplans/studyPlans"
     }
 }

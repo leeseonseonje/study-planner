@@ -29,6 +29,7 @@ internal class LoginControllerTest(
     fun init() {
         member = Member.of(MemberRequest("name", "email", "password"))
     }
+
     @Test
     fun home() {
         mockMvc
@@ -68,8 +69,9 @@ internal class LoginControllerTest(
                 .andExpect(view().name("main"))
                 .andReturn()
 
-        assertThat(result.request.session?.getAttribute("member")).isNotNull
-
+        val loginMember = result.request.session?.getAttribute("member") as Member
+        assertThat(loginMember.email).isEqualTo("leeseonje9323@gmail.com")
+        assertThat(loginMember.password).isEqualTo("1234")
     }
 
 

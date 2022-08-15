@@ -28,7 +28,7 @@ internal class StudyPlanQueryServiceTest(
     fun test() {
         val member = memberRepository.findByIdOrNull(0L)
 
-        val findByMember = studyPlanRepository.findByMember(member)
+        val findByMember = studyPlanRepository.findByMemberAndStatus(member, ING)
 
         println(findByMember.isEmpty())
     }
