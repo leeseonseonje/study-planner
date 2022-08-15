@@ -13,35 +13,41 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col">title</th>
-            <th scope="col">content</th>
-            <th scope="col">figure</th>
-            <th scope="col">progress</th>
-            <th scope="col">restDate</th>
+            <th scope="col">제목</th>
+            <th scope="col">내용</th>
+            <th scope="col">현재수치/목표수치</th>
+            <th scope="col">현재 진행률</th>
+            <th scope="col">목표일정까지 남은시간</th>
+            <th scope="col">#</th>
+
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-        </tr>
+        <tr th:each="studyplan : ${studyPlans}">
+            <td th:text="${studyplan.title}"></td>
+            <td th:text="${studyplan.content}"></td>
+            <td th:text="|${studyplan.currentFigure} / ${studyplan.completeFigure}|"></td>
+            <td th:text="|${studyplan.currentProgress}%|"></td>
+            <td th:text="|${studyplan.expectCompleteRestDate}일|"></td>
+            <td>
+                <button href="/"
+                   class="btn btn-success">상세</button>
+            </td>
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <th scope="row">2</th>-->
+<!--            <td>Jacob</td>-->
+<!--            <td>Thornton</td>-->
+<!--            <td>@fat</td>-->
+<!--            <td>@fat</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <th scope="row">3</th>-->
+<!--            <td>Larry the Bird</td>-->
+<!--            <td>@twitter</td>-->
+<!--            <td>@twitter</td>-->
+<!--            <td>@twitter</td>-->
+<!--        </tr>-->
         </tbody>
     </table>
 </div>

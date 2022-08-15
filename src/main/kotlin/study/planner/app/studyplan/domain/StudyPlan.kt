@@ -35,6 +35,7 @@ class StudyPlan {
 
     var completeDate: LocalDate?
 
+    @Enumerated(EnumType.STRING)
     var status: PlanStatus
 
     private constructor(member: Member?, title: String?, content: String?, currentFigure: Int, completeFigure: Int?, expectCompleteDate: LocalDate?, registrationDate: LocalDate, completeDate: LocalDate?, status: PlanStatus) {
