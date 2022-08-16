@@ -43,7 +43,7 @@ internal class StudyPlanQueryServiceTest(
                     LocalDate.of(now.year.plus(1), now.month, now.dayOfMonth)), member)
             studyPlanRepository.save(studyPlan)
         }
-        val studyPlans = studyPlanQueryService.studyPlans(1L)
+        val studyPlans = studyPlanQueryService.studyPlans(1L, ING)
 
         for (studyPlan in studyPlans) {
             assertThat(studyPlan.currentFigure).isEqualTo(0)

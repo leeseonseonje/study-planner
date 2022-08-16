@@ -31,14 +31,19 @@ class InitData(
             val member = Member.of(MemberRequest("선제", "leeseonje9323@gmail.com", "1234"))
             em.persist(member)
 
-//            var sum = 100
-//            for (i in 1..10) {
-//                sum += 1
-//                val request = StudyPlanRegistrationRequest(1, "title", "content", 1000, LocalDate.of(2023, 1, i))
-//                val studyPlan = StudyPlan.of(request, member)
-//                studyPlan.currentFigure = sum
-//                em.persist(studyPlan)
-//            }
+            var sum = 100
+            for (i in 1..10) {
+                sum += 1
+                val request = StudyPlanRegistrationRequest(1, "title", "content", 1000, LocalDate.of(2023, 1, i))
+                val studyPlan = StudyPlan.of(request, member)
+                if (i % 2 == 0) {
+                    println(i % 2)
+                    studyPlan.currentFigureCalculate(1000)
+                } else {
+                    studyPlan.currentFigure = sum
+                }
+                em.persist(studyPlan)
+            }
             em.flush()
             em.clear()
         }

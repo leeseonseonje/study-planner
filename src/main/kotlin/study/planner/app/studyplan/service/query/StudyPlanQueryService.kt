@@ -19,10 +19,10 @@ class StudyPlanQueryService(
         private val planTransactionRepository: PlanTransactionRepository
 ) {
 
-    fun studyPlans(memberId: Long): List<StudyPlansResponse> {
+    fun studyPlans(memberId: Long, status: PlanStatus): List<StudyPlansResponse> {
         val member = memberRepository.findByIdOrNull(memberId)
 
-        val studyPlans = studyPlanRepository.findByMemberAndStatus(member, PlanStatus.ING)
+        val studyPlans = studyPlanRepository.findByMemberAndStatus(member, status)
 
         return studyPlans.stream().map { StudyPlansResponse.toDto(it) }.toList()
     }

@@ -4,7 +4,10 @@ import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import study.planner.app.studyplan.domain.PlanStatus
+import study.planner.app.studyplan.domain.PlanStatus.*
 import study.planner.app.studyplan.dto.StudyPlanDetailsResponse
 import study.planner.app.studyplan.dto.StudyPlansResponse
 import study.planner.app.studyplan.service.query.StudyPlanQueryService
@@ -16,12 +19,13 @@ class StudyPlanQueryController(
 ) {
 
     @GetMapping("/study-plans/{memberId}")
-    fun studyPlans(@PathVariable memberId: Long, model: Model): String {
-        val studyPlans = studyPlanQueryService.studyPlans(memberId)
+    fun studyPlans(@PathVariable memberId: Long, @RequestParam status: PlanStatus, model: Model): String {
+
+        val studyPlans = studyPlanQueryService.studyPlans(memberId, status)
 
         model.addAttribute("studyPlans", studyPlans)
 
-        return "/studyplans/studyPlans"
+        return if (status == ING) "/studyplans/studyPlans" else "/studyplans/completeStudyPlans"
     }
 
 //    @GetMapping("/study-plan/{studyPlanId}")
