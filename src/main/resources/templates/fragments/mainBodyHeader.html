@@ -13,17 +13,19 @@
 
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link active text-success" href="/">StudyPlanner</a>
+            <a id="mainHeader" class="nav-link active text-success" href="/">StudyPlanner</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-secondary" th:href="@{/study-plan/{memberId}(memberId=${memberId})}">계획 등록하기</a>
+<!--            <a class="nav-link text-secondary" th:href="@{/study-plan/{memberId}(memberId=${memberId})}">계획 등록하기</a>-->
+            <a id="registrationHeader" class="nav-link text-secondary" onclick="registrationPlan()">계획 등록하기</a>
         </li>
         <li class="nav-item">
 <!--            <a class="nav-link text-secondary" th:href="@{/study-plans/{memberId}(memberId=${memberId}, status=ING)}" onclick="test()">공부중인 계획들</a>-->
-            <a class="nav-link text-secondary" onclick="test()">공부중인 계획들</a>
+            <a id="ingPlansHeader" class="nav-link text-secondary" onclick="studyPlans()">공부중인 계획들</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-secondary" th:href="@{/study-plans/{memberId}(memberId=${memberId}, status=COMPLETE)}">완료한 계획들</a>
+<!--            <a class="nav-link text-secondary" th:href="@{/study-plans/{memberId}(memberId=${memberId}, status=COMPLETE)}">완료한 계획들</a>-->
+            <a id="completePlansHeader" class="nav-link text-secondary" onclick="studyPlans()">완료한 계획들</a>
         </li>
     </ul>
 </div>
