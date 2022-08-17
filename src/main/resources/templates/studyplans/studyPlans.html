@@ -8,7 +8,7 @@
 <div th:replace="fragments/studyPlansBodyHeader :: bodyHeader"></div>
 <div class="full-container">
     <div class="title-container">
-        <h1 style="font-size: 48px" class="text-secondary">공부중인 계획들</h1>
+        <h1 id="title" style="font-size: 48px" class="text-secondary">공부중인 계획들</h1>
     </div>
     <table class="table table-striped">
         <thead>
@@ -37,4 +37,19 @@
 </div>
 <div th:replace="fragments/footer :: footer"></div>
 </body>
+<script>
+    window.onload = function() {
+        let status = new URL(location.href).searchParams.get('status');
+
+        alert(status);
+        alert(document.getElementById("test").innerText)
+        let title = "";
+        if (status == "ING") {
+            title = "ING";
+        } else {
+            title = "COMPLETE";
+        }
+        document.getElementById("title").innerHTML = title;
+    }
+</script>
 </html>

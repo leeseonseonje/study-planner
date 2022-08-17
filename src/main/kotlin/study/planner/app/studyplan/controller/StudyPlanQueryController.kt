@@ -25,7 +25,8 @@ class StudyPlanQueryController(
 
         model.addAttribute("studyPlans", studyPlans)
 
-        return if (status == ING) "/studyplans/studyPlans" else "/studyplans/completeStudyPlans"
+//        return if (status == ING) "/studyplans/studyPlans" else "/studyplans/completeStudyPlans"
+        return "/studyplans/studyPlans"
     }
 
 //    @GetMapping("/study-plan/{studyPlanId}")
