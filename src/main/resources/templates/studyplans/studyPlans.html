@@ -6,7 +6,7 @@
 </head>
 <body>
 <div th:replace="fragments/studyPlansBodyHeader :: bodyHeader"></div>
-<div class="full-container">
+<div id="full" class="full-container">
     <div class="title-container">
         <h1 id="title" style="font-size: 48px" class="text-secondary">공부중인 계획들</h1>
     </div>
@@ -41,12 +41,13 @@
     window.onload = function() {
         let status = new URL(location.href).searchParams.get('status');
 
-        alert(status);
-        alert(document.getElementById("test").innerText)
         let title = "";
         if (status == "ING") {
+            document.getElementById("ingPlans").className = "nav-link active text-success";
+            document.getElementById("full").remove();
             title = "ING";
         } else {
+            document.getElementById("completePlans").className = "nav-link active text-success";
             title = "COMPLETE";
         }
         document.getElementById("title").innerHTML = title;
