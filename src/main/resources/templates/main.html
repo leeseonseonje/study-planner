@@ -93,7 +93,7 @@
     window.onload = function() {
         document.getElementById("mainHeader").className = "nav-link active text-success";
         document.getElementById("registrationHeader").className = "nav-link text-secondary";
-        document.getElementById("ingPlans").className = "nav-link text-secondary";
+        document.getElementById("ingPlansHeader").className = "nav-link text-secondary";
         document.getElementById("ingPlans").style.display = "none";
         document.getElementById("registrationPlan").style.display = "none";
     };
@@ -101,14 +101,14 @@
     function registrationPlan() {
         document.getElementById("registrationHeader").className = "nav-link active text-success";
         document.getElementById("mainHeader").className = "nav-link text-secondary";
-        document.getElementById("ingPlans").className = "nav-link text-secondary";
+        document.getElementById("ingPlansHeader").className = "nav-link text-secondary";
         document.getElementById("registrationPlan").style.display = "flex";
         document.getElementById("main").style.display = "none";
         document.getElementById("ingPlans").style.display = "none";
     }
 
     function studyPlans() {
-        document.getElementById("ingPlans").className = "nav-link active text-success";
+        document.getElementById("ingPlansHeader").className = "nav-link active text-success";
         document.getElementById("registrationHeader").className = "nav-link text-secondary";
         document.getElementById("mainHeader").className = "nav-link text-secondary";
         document.getElementById("ingPlans").style.display = "flex";
