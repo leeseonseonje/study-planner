@@ -14,46 +14,6 @@
         <label>안녕하세요!</label>
     </div>
 </div>
-
-<div id="ingPlans" class="full-container">
-    <div class="title-container">
-        <h1 id="title" style="font-size: 48px" class="text-secondary">공부중인 계획들</h1>
-    </div>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">제목</th>
-            <th scope="col">내용</th>
-            <th scope="col">현재수치/목표수치</th>
-            <th scope="col">현재 진행률</th>
-            <th scope="col">목표일정까지 남은시간</th>
-            <th scope="col">#</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="studyplan : ${studyPlans}">
-            <td th:text="${studyplan.title}"></td>
-            <td th:text="${studyplan.content}"></td>
-            <td th:text="|${studyplan.currentFigure} / ${studyplan.completeFigure}|"></td>
-            <td th:text="|${studyplan.currentProgress}%|"></td>
-            <td th:text="|${studyplan.expectCompleteRestDate}일|"></td>
-            <td>
-                <button href="/"
-                        class="btn btn-success">상세</button>
-            </td>
-        </tbody>
-    </table>
-</div>
-
 <div th:replace="fragments/footer :: footer"></div>
 </body>
-<script>
-    window.onload = function() {
-    };
-    function test() {
-        document.getElementById("main").remove();
-        // document.getElementById("ingPlans");
-
-    }
-</script>
 </html>
