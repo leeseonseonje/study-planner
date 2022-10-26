@@ -29,28 +29,12 @@
             <td th:text="|${studyplan.currentProgress}%|"></td>
             <td th:text="|${studyplan.expectCompleteRestDate}일|"></td>
             <td>
-                <button href="/"
-                   class="btn btn-success">상세</button>
+                <a th:href="@{/study-plan/detail/{studyPlanId}(studyPlanId=${studyplan.studyPlanId})}"
+                   class="btn btn-success">상세</a>
             </td>
         </tbody>
     </table>
 </div>
 <div th:replace="fragments/footer :: footer"></div>
 </body>
-<script>
-    window.onload = function() {
-        let status = new URL(location.href).searchParams.get('status');
-
-        let title = "";
-        if (status == "ING") {
-            document.getElementById("ingPlans").className = "nav-link active text-success";
-            document.getElementById("full").remove();
-            title = "ING";
-        } else {
-            document.getElementById("completePlans").className = "nav-link active text-success";
-            title = "COMPLETE";
-        }
-        document.getElementById("title").innerHTML = title;
-    }
-</script>
 </html>

@@ -25,14 +25,17 @@ class StudyPlanQueryController(
 
         model.addAttribute("studyPlans", studyPlans)
 
-//        return if (status == ING) "/studyplans/studyPlans" else "/studyplans/completeStudyPlans"
-        return "/studyplans/studyPlans"
+        return "/studyplan/studyPlans"
     }
 
-//    @GetMapping("/study-plan/{studyPlanId}")
-//    fun studyPlanDetails(@PathVariable studyPlanId: Long): StudyPlanDetailsResponse? {
-//        return studyPlanQueryService.studyPlanDetails(studyPlanId)
-//    }
+    @GetMapping("/study-plan/detail/{studyPlanId}")
+    fun studyPlanDetails(@PathVariable studyPlanId: Long, model: Model): String {
+        val studyPlanDetails = studyPlanQueryService.studyPlanDetails(studyPlanId)
+
+        model.addAttribute("studyPlanDetails", studyPlanDetails)
+
+        return "/studyplan/studyPlanDetails"
+    }
 
 
 }

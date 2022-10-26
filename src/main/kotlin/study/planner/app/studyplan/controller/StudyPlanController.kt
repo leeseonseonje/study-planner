@@ -31,7 +31,7 @@ class StudyPlanController(
         model.addAttribute("memberId", memberId)
         model.addAttribute("studyPlan", request)
 
-        return "studyplans/createStudyPlanForm"
+        return "studyplan/createStudyPlanForm"
     }
 
     @PostMapping("")
@@ -45,8 +45,12 @@ class StudyPlanController(
             }
         }
 
+        return registrationRedirect(result, request)
+    }
+
+    private fun registrationRedirect(result: BindingResult, request: StudyPlanRegistrationRequest): String {
         if (result.hasErrors()) {
-            return "studyplans/createStudyPlanForm"
+            return "studyplan/createStudyPlanForm"
         }
 
         studyPlanService.studyPlanRegistration(request)

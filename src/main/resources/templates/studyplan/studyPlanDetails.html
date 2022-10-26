@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>스터디 플래너</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<style>
+    .fieldError {
+        border-color: #bd2130;
+        color: #bd2130;
+    }
+</style>
+<body>
+<div class="full-container">
+    <div class="title-container">
+        <h1 style="font-size: 48px" class="text-secondary">계획 상세</h1>
+    </div>
+    <div class="flex-container">
+        <div class="card" style="width: 25rem;">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${studyPlanDetails.title}"></h5>
+                <p class="card-text" th:text="${studyPlanDetails.content}"></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" th:text="|${studyPlanDetails.completeFigure}중에 ${studyPlanDetails.currentFigure}만큼 했어요|"></li>
+                <li class="list-group-item" th:text="|현재 ${studyPlanDetails.currentProgress}% 진행 했어요|"></li>
+                <li class="list-group-item" th:text="|목표 날짜(${studyPlanDetails.expectCompleteDate}일) 까지 ${studyPlanDetails.expectCompleteRestDate}일 남았어요|"></li>
+                <li class="list-group-item" th:text="|${studyPlanDetails.startDate}일에 시작 했고, 시작 한지 ${studyPlanDetails.afterStartDate}일 됐어요|"></li>
+                <li class="list-group-item" th:text="|시작 한지 ${studyPlanDetails.afterStartDate}일 됐어요|"></li>
+                <li class="list-group-item" th:text="|하루 평균 ${studyPlanDetails.avgFigure}(${studyPlanDetails.avgProgress}%)만큼 공부했어요 |"></li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
