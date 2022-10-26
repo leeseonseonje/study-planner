@@ -17,12 +17,12 @@ class PlanTransactionRepositoryImpl(
 
 ) : PlanTransactionRepositoryCustom {
 
-    override fun planAvg(studyPlanId: Long): Double? {
+    override fun dayFigures(studyPlanId: Long): List<Int>? {
         return queryFactory
-                .select(planTransaction.dayFigure.avg())
+                .select(planTransaction.dayFigure)
                 .from(planTransaction)
                 .where(planTransaction.studyPlan.id.eq(studyPlanId))
-                .fetchOne()
+                .fetch()
     }
 
     override fun planTransactions(studyPlanId: Long, pageable: Pageable): List<PlanTransactionsDto> {

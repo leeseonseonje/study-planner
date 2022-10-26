@@ -19,11 +19,11 @@ data class StudyPlanDetailsResponse(
         val status: PlanStatus,
         val startDate: String,
         val afterStartDate: Long,
-        val avgFigure: Double?,
+        val avgFigure: Int?,
         val avgProgress: Double?
 ) {
     companion object {
-        fun toDto(studyPlan: StudyPlan?, planAvg: Double?): StudyPlanDetailsResponse? {
+        fun toDto(studyPlan: StudyPlan?, planAvg: Int?): StudyPlanDetailsResponse? {
             val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 d일")
             studyPlan?.let {
                 return StudyPlanDetailsResponse(

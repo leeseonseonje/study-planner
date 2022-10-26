@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional
 import study.planner.app.member.repository.MemberRepository
 import study.planner.app.plantransaction.repository.PlanTransactionRepository
 import study.planner.app.studyplan.domain.PlanStatus
+import study.planner.app.studyplan.domain.StudyPlan
 import study.planner.app.studyplan.dto.StudyPlanDetailsResponse
 import study.planner.app.studyplan.dto.StudyPlansResponse
 import study.planner.app.studyplan.repository.StudyPlanRepository
@@ -30,8 +31,19 @@ class StudyPlanQueryService(
     fun studyPlanDetails(studyPlanId: Long): StudyPlanDetailsResponse? {
         val studyPlan = studyPlanRepository.findByIdOrNull(studyPlanId)
 
-        val planAvg = planTransactionRepository.planAvg(studyPlanId)
+        return StudyPlanDetailsResponse.toDto(studyPlan, averageFigure(studyPlanId, studyPlan))
+    }
 
-        return StudyPlanDetailsResponse.toDto(studyPlan, planAvg)
+    private fun averageFigure(studyPlanId: Long, studyPlan: StudyPlan?): Int {
+        val dayFigures = planTransactionRepository.dayFigures(studyPlanId)
+        var totalFigure = 0
+        dayFigures?.let {
+            for (figure in dayFigures) {
+                totalFigure += figure
+            }
+        }
+        var averageFigure = 0
+        studyPlan?.let { averageFigure = totalFigure.div(it.afterStartDate()).toInt() }
+        return averageFigure
     }
 }

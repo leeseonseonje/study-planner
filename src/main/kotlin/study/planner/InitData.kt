@@ -43,7 +43,7 @@ class InitData(
                 } else {
                     studyPlan.currentFigure = sum
                 }
-                val planTransaction = PlanTransaction.of(10, studyPlan, LocalDate.now())
+                val planTransaction = PlanTransaction.of(sum, studyPlan, LocalDate.now())
                 em.persist(studyPlan)
                 em.persist(planTransaction)
             }

@@ -5,7 +5,7 @@ import study.planner.app.plantransaction.dto.PlanTransactionsDto
 
 interface PlanTransactionRepositoryCustom {
 
-    fun planAvg(studyPlanId: Long): Double?
+    fun dayFigures(studyPlanId: Long): List<Int>?
 
     fun planTransactions(studyPlanId: Long, pageable: Pageable): List<PlanTransactionsDto>
 }
