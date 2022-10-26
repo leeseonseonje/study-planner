@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component
 import org.springframework.stereotype.Service
 import study.planner.app.member.Member
 import study.planner.app.member.dto.MemberRequest
+import study.planner.app.plantransaction.PlanTransaction
 import study.planner.app.studyplan.domain.StudyPlan
 import study.planner.app.studyplan.dto.StudyPlanRegistrationRequest
 import java.time.LocalDate
@@ -42,10 +43,13 @@ class InitData(
                 } else {
                     studyPlan.currentFigure = sum
                 }
+                val planTransaction = PlanTransaction.of(10, studyPlan, LocalDate.now())
                 em.persist(studyPlan)
+                em.persist(planTransaction)
             }
             em.flush()
             em.clear()
+
         }
     }
 }

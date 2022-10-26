@@ -3,6 +3,7 @@ package study.planner.app.studyplan.dto
 import study.planner.app.studyplan.domain.PlanStatus
 import study.planner.app.studyplan.domain.StudyPlan
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 data class StudyPlanDetailsResponse(
         //제목, 내용, 현재/총 수치, 현재 진행도, 남은 일 수, 예상완료날짜, status(진행중, 완료, 만료), 시작 날짜, 시작 후 몇일
@@ -14,16 +15,17 @@ data class StudyPlanDetailsResponse(
         val completeFigure: Int?,
         val currentProgress: Double?,
         val expectCompleteRestDate: Long?,
-        val expectCompleteDate: LocalDate?,
+        val expectCompleteDate: String?,
         val status: PlanStatus,
-        val startDate: LocalDate,
+        val startDate: String,
         val afterStartDate: Long,
         val avgFigure: Double?,
         val avgProgress: Double?
 ) {
     companion object {
         fun toDto(studyPlan: StudyPlan?, planAvg: Double?): StudyPlanDetailsResponse? {
-                studyPlan?.let {
+            val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 d일")
+            studyPlan?.let {
                 return StudyPlanDetailsResponse(
                         it.id,
                         it.title,
@@ -32,9 +34,9 @@ data class StudyPlanDetailsResponse(
                         it.completeFigure,
                         it.progressConverter(it.currentFigure),
                         it.restExpectCompleteDate(),
-                        it.expectCompleteDate,
+                        formatter.format(it.expectCompleteDate),
                         it.status,
-                        it.registrationDate,
+                        formatter.format(it.registrationDate),
                         it.afterStartDate(),
                         planAvg,
                         it.progressConverter(planAvg)
@@ -42,5 +44,10 @@ data class StudyPlanDetailsResponse(
             }
             return null
         }
+    }
+    fun dateTimeFormatter(date: LocalDate): String {
+        val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 d일")
+
+        return formatter.format(date)
     }
 }

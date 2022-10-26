@@ -1,9 +1,11 @@
 package study.planner.app.studyplan.domain
 
+import org.springframework.format.annotation.DateTimeFormat
 import study.planner.app.member.Member
 import study.planner.app.studyplan.domain.PlanStatus.*
 import study.planner.app.studyplan.dto.StudyPlanRegistrationRequest
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.time.temporal.ChronoUnit.*
 import javax.persistence.*
@@ -91,7 +93,7 @@ class StudyPlan {
     }
 
     fun afterStartDate(): Long {
-        return registrationDate.until(LocalDate.now(), DAYS)
+        return registrationDate.until(LocalDate.now(), DAYS) + 1
     }
 
     private fun complete() {
