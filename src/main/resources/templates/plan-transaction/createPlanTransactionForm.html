@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>스터디 플래너</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<style>
+    .fieldError {
+        border-color: #bd2130;
+        color: #bd2130;
+    }
+</style>
+<body>
+<div th:replace="fragments/registrationBodyHeader :: bodyHeader"></div>
+<div class="full-container">
+    <div class="title-container">
+        <h1 style="font-size: 48px" class="text-secondary">오늘 공부</h1>
+    </div>
+    <div class="flex-container">
+
+        <form role="form" action="/plan-transaction" th:object="${planTransaction}" method="post">
+            <input type="hidden" th:field="*{studyPlanId}" id="studyPlanId">
+
+            <label>양</label>
+            <div class="form-group" style="width: 500px; margin-bottom: 30px">
+                <input type="text" th:field="*{dayFigure}" class="form-control" placeholder="오늘 공부한 만큼"
+                       th:class="${#fields.hasErrors('dayFigure')}? 'form-control fieldError' : 'form-control'">
+                <label class="fieldError" th:if="${#fields.hasErrors('dayFigure')}" th:errors="*{dayFigure}"></label>
+            </div>
+
+            <label>오늘 날짜</label>
+            <div class="form-group" style="width: 500px; margin-bottom: 30px">
+                <input type="text" th:field="*{day}" class="form-control" placeholder="오늘 날짜" readonly>
+            </div>
+
+            <div style="line-height: 10vh">
+                <button type="submit" class="btn btn-lg btn-success" style="width: 500px">등록</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

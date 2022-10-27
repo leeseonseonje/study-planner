@@ -36,7 +36,7 @@ class StudyPlanController(
 
     @PostMapping("")
     fun studyPlanRegistration(@Valid @ModelAttribute("studyPlan") request: StudyPlanRegistrationRequest,
-                              result:BindingResult): String {
+                              result: BindingResult): String {
 
         request.expectCompleteDate?.let {
             if (it.isBefore(LocalDate.now())) {

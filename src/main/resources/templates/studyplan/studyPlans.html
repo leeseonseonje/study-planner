@@ -16,9 +16,10 @@
             <th scope="col">제목</th>
             <th scope="col">내용</th>
             <th scope="col">현재수치/목표수치</th>
-            <th scope="col">현재 진행률</th>
-            <th scope="col">목표일정까지 남은시간</th>
-            <th scope="col">#</th>
+            <th scope="col">현재 진행률은</th>
+            <th scope="col">목표일정까지 얼마나 남았는지</th>
+            <th scope="col">오늘 공부를 얼마나 했는지</th>
+            <th scope="col">계획의 상세한 정보는</th>
         </tr>
         </thead>
         <tbody>
@@ -28,6 +29,10 @@
             <td th:text="|${studyplan.currentFigure} / ${studyplan.completeFigure}|"></td>
             <td th:text="|${studyplan.currentProgress}%|"></td>
             <td th:text="|${studyplan.expectCompleteRestDate}일|"></td>
+            <td>
+                <a th:href="@{/plan-transaction/{studyPlanId}(studyPlanId=${studyplan.studyPlanId})}"
+                   class="btn btn-success">오늘 공부</a>
+            </td>
             <td>
                 <a th:href="@{/study-plan/detail/{studyPlanId}(studyPlanId=${studyplan.studyPlanId})}"
                    class="btn btn-success">상세</a>
