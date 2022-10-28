@@ -47,7 +47,7 @@ internal class PlanTransactionQueryServiceTest(
 
         val planTransactions = planTransactionQueryService.planTransactions(savedStudyPlan.id!!, 0)
 
-        for (planTransaction in planTransactions) {
+        for (planTransaction in planTransactions.data) {
             assertThat(planTransaction?.dayFigure).isEqualTo(10)
             assertThat(planTransaction?.dayProgress).isEqualTo(0.7)
         }

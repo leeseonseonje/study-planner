@@ -16,11 +16,11 @@ class PlanTransactionQueryService(
         private val planTransactionRepository: PlanTransactionRepository
 ) {
 
-    fun planTransactions(studyPlanId: Long, page: Int): List<PlanTransactionsResponse?> {
+    fun planTransactions(studyPlanId: Long, page: Int): PlanTransactionsPageable<List<PlanTransactionsResponse?>> {
         val studyPlan = studyPlanRepository.findByIdOrNull(studyPlanId)
 
         val planTransactions = planTransactionRepository.planTransactions(studyPlanId, PageRequest.of(page, 10))
-
-        return planTransactions.stream().map { PlanTransactionsResponse.toDto(it, studyPlan) }.toList()
+        val result = planTransactions.content.stream().map { PlanTransactionsResponse.toDto(it, studyPlan) }.toList()
+        return PlanTransactionsPageable(result, planTransactions.totalPages)
     }
 }

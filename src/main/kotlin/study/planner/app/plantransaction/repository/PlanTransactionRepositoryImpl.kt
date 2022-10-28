@@ -1,6 +1,8 @@
 package study.planner.app.plantransaction.repository
 
 import com.querydsl.jpa.impl.JPAQueryFactory
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Repository
 import study.planner.app.QuerydslFactory
@@ -25,8 +27,8 @@ class PlanTransactionRepositoryImpl(
                 .fetch()
     }
 
-    override fun planTransactions(studyPlanId: Long, pageable: Pageable): List<PlanTransactionsDto> {
-        return queryFactory
+    override fun planTransactions(studyPlanId: Long, pageable: Pageable): Page<PlanTransactionsDto> {
+        val result = queryFactory
                 .select(QPlanTransactionsDto(
                         planTransaction.dayFigure,
                         planTransaction.day,
@@ -38,5 +40,13 @@ class PlanTransactionRepositoryImpl(
                 .limit(pageable.pageSize.toLong())
                 .orderBy(planTransaction.day.desc())
                 .fetch()
+
+        val count = queryFactory
+                .select(planTransaction.count())
+                .from(planTransaction)
+                .where(planTransaction.studyPlan.id.eq(studyPlanId))
+                .fetchOne()
+
+        return PageImpl(result, pageable, count!!)
     }
 }

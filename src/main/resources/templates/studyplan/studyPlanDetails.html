@@ -29,7 +29,7 @@
                 <li class="list-group-item" th:text="|하루 평균 ${studyPlanDetails.avgFigure}(${studyPlanDetails.avgProgress}%)만큼 공부했어요 |"></li>
             </ul>
             <div class="card-body">
-                <a href="#" class="btn btn-success">History 보기</a>
+                <a class="btn btn-success" th:href="@{/plan-transactions/{studyPlanId}(studyPlanId=${studyPlanDetails.studyPlanId})}">History 보기</a>
                 <button class="btn btn-success" onclick="history.back()">뒤로 가기</button>
             </div>
         </div>

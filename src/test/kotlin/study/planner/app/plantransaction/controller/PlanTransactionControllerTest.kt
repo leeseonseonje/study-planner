@@ -49,6 +49,6 @@ internal class PlanTransactionControllerTest(
                         .param("day", "2022-02-22"))
                 .andDo(print())
                 .andExpect(status().isOk)
-//                .andExpect(view().name("redirect:/"))
+                .andExpect(view().name("redirect:/"))
     }
 }

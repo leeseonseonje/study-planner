@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>스터디 플래너</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div th:replace="fragments/studyPlansBodyHeader :: bodyHeader"></div>
+<div id="full" class="full-container">
+    <div class="title-container">
+        <h1 id="title" style="font-size: 48px" class="text-secondary">공부중인 계획들</h1>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">공부 한 날</th>
+            <th scope="col">공부 한 양(%)</th>
+            <th scope="col">총 공부 한 양(%)/목표</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="planTransaction : ${planTransactions}">
+            <td th:text="${planTransaction.day}"></td>
+            <td th:text="|${planTransaction.dayFigure}(${planTransaction.dayProgress}%)|"></td>
+            <td th:text="|${planTransaction.currentFigure}(${planTransaction.currentProgress}%) / ${planTransaction.completeFigure}|"></td>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation example ">
+        <ul class="pagination">
+            <th:block th:with="start = 0, end = ${totalPages}" th:if="${totalPages != 0}">
+                <li class="page-item"
+                    th:with="start = 0, end = ${totalPages}"
+                    th:each="pageButton : ${#numbers.sequence(start + 1, end)}">
+                    <a class="page-link" th:text=${pageButton} th:href="@{?page={page} (page=${pageButton - 1})}"></a>
+                </li>
+            </th:block>
+        </ul>
+    </nav>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

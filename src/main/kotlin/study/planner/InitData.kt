@@ -1,7 +1,6 @@
 package study.planner
 
 import org.springframework.stereotype.Component
-import org.springframework.stereotype.Service
 import study.planner.app.member.Member
 import study.planner.app.member.dto.MemberRequest
 import study.planner.app.plantransaction.PlanTransaction
@@ -41,11 +40,19 @@ class InitData(
                     println(i % 2)
                     studyPlan.currentFigureCalculate(1000)
                 } else {
-                    studyPlan.currentFigure = sum
+                    studyPlan.currentFigure = 0
                 }
                 val planTransaction = PlanTransaction.of(sum, studyPlan, LocalDate.now())
                 em.persist(studyPlan)
                 em.persist(planTransaction)
+                if (studyPlan.id?.toInt() == 2) {
+                    var s = 1
+                    for (i in 1..120) {
+                        val pt = PlanTransaction.of(s, studyPlan, LocalDate.now())
+                        em.persist(pt)
+                        s++
+                    }
+                }
             }
             em.flush()
             em.clear()
