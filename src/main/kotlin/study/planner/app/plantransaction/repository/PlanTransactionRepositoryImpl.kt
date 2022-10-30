@@ -13,8 +13,7 @@ import study.planner.app.studyplan.domain.QStudyPlan
 import study.planner.app.studyplan.domain.QStudyPlan.*
 import javax.persistence.EntityManager
 
-@Repository
-class PlanTransactionRepositoryImpl(
+class PlanTransactionRepositoryImpl (
         private val queryFactory: JPAQueryFactory
 
 ) : PlanTransactionRepositoryCustom {
