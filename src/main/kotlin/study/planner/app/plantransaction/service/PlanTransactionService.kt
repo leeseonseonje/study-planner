@@ -4,11 +4,10 @@ import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import study.planner.app.plantransaction.PlanTransaction
-import study.planner.app.plantransaction.dto.PlanTransactionRequest
+import study.planner.app.plantransaction.controller.dto.PlanTransactionRequest
 import study.planner.app.plantransaction.repository.PlanTransactionRepository
 import study.planner.app.studyplan.domain.StudyPlan
 import study.planner.app.studyplan.repository.StudyPlanRepository
-import java.time.LocalDate
 
 @Service
 @Transactional

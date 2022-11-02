@@ -1,6 +1,6 @@
 package study.planner.app.member
 
-import study.planner.app.member.dto.MemberRequest
+import study.planner.app.member.controller.dto.MemberRequest
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue

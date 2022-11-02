@@ -6,7 +6,7 @@ import org.springframework.validation.BindingResult
 import org.springframework.validation.FieldError
 import org.springframework.web.bind.annotation.*
 import study.planner.app.member.repository.MemberRepository
-import study.planner.app.studyplan.dto.StudyPlanRegistrationRequest
+import study.planner.app.studyplan.controller.dto.StudyPlanRegistrationRequest
 import study.planner.app.studyplan.service.StudyPlanService
 import java.time.LocalDate
 import javax.validation.Valid

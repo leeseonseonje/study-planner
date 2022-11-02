@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import study.planner.app.member.dto.MemberRequest
+import study.planner.app.member.controller.dto.MemberRequest
 import study.planner.app.member.repository.MemberRepository
 
 @SpringBootTest

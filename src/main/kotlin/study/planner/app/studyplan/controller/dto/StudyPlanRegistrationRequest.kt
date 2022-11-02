@@ -1,4 +1,4 @@
-package study.planner.app.studyplan.dto
+package study.planner.app.studyplan.controller.dto
 
 import org.springframework.format.annotation.DateTimeFormat
 import java.time.LocalDate

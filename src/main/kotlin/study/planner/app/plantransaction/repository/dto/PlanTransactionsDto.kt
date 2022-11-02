@@ -1,4 +1,4 @@
-package study.planner.app.plantransaction.dto
+package study.planner.app.plantransaction.repository.dto
 
 import com.querydsl.core.annotations.QueryProjection
 import java.time.LocalDate

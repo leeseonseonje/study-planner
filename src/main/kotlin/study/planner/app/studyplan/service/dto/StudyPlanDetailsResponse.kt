@@ -1,4 +1,4 @@
-package study.planner.app.studyplan.dto
+package study.planner.app.studyplan.service.dto
 
 import study.planner.app.studyplan.domain.PlanStatus
 import study.planner.app.studyplan.domain.StudyPlan

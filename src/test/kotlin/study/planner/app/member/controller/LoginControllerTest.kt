@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers.*
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 import study.planner.app.member.Member
-import study.planner.app.member.dto.MemberRequest
+import study.planner.app.member.controller.dto.MemberRequest
 
 @SpringBootTest
 @AutoConfigureMockMvc

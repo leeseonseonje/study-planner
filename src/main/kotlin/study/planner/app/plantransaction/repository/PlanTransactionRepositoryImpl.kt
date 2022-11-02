@@ -2,16 +2,12 @@ package study.planner.app.plantransaction.repository
 
 import com.querydsl.jpa.impl.JPAQueryFactory
 import org.springframework.data.domain.Page
-import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.Pageable
-import org.springframework.stereotype.Repository
-import study.planner.app.QuerydslFactory
+import org.springframework.data.support.PageableExecutionUtils
 import study.planner.app.plantransaction.QPlanTransaction.*
-import study.planner.app.plantransaction.dto.PlanTransactionsDto
+import study.planner.app.plantransaction.repository.dto.PlanTransactionsDto
 import study.planner.app.plantransaction.dto.QPlanTransactionsDto
-import study.planner.app.studyplan.domain.QStudyPlan
 import study.planner.app.studyplan.domain.QStudyPlan.*
-import javax.persistence.EntityManager
 
 class PlanTransactionRepositoryImpl (
         private val queryFactory: JPAQueryFactory
@@ -40,12 +36,11 @@ class PlanTransactionRepositoryImpl (
                 .orderBy(planTransaction.day.desc())
                 .fetch()
 
-        val count = queryFactory
+        val countQuery = queryFactory
                 .select(planTransaction.count())
                 .from(planTransaction)
                 .where(planTransaction.studyPlan.id.eq(studyPlanId))
-                .fetchOne()
 
-        return PageImpl(result, pageable, count!!)
+        return PageableExecutionUtils.getPage(result, pageable) { countQuery.fetchOne()!! }
     }
 }

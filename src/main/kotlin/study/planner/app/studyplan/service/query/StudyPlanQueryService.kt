@@ -7,8 +7,8 @@ import study.planner.app.member.repository.MemberRepository
 import study.planner.app.plantransaction.repository.PlanTransactionRepository
 import study.planner.app.studyplan.domain.PlanStatus
 import study.planner.app.studyplan.domain.StudyPlan
-import study.planner.app.studyplan.dto.StudyPlanDetailsResponse
-import study.planner.app.studyplan.dto.StudyPlansResponse
+import study.planner.app.studyplan.service.dto.StudyPlanDetailsResponse
+import study.planner.app.studyplan.service.dto.StudyPlansResponse
 import study.planner.app.studyplan.repository.StudyPlanRepository
 import kotlin.streams.toList
 

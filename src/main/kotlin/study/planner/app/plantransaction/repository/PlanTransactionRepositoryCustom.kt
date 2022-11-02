@@ -2,7 +2,7 @@ package study.planner.app.plantransaction.repository
 
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
-import study.planner.app.plantransaction.dto.PlanTransactionsDto
+import study.planner.app.plantransaction.repository.dto.PlanTransactionsDto
 
 interface PlanTransactionRepositoryCustom {
 

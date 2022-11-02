@@ -1,5 +1,6 @@
-package study.planner.app.plantransaction.dto
+package study.planner.app.plantransaction.service.dto
 
+import study.planner.app.plantransaction.repository.dto.PlanTransactionsDto
 import study.planner.app.studyplan.domain.StudyPlan
 import java.time.LocalDate
 

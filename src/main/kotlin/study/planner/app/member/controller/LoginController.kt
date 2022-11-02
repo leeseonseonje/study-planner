@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.SessionAttribute
 import study.planner.app.member.Member
-import study.planner.app.member.dto.LoginRequest
+import study.planner.app.member.controller.dto.LoginRequest
 import study.planner.app.member.service.MemberService
 import javax.servlet.http.HttpServletRequest
 import javax.validation.Valid

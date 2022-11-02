@@ -4,7 +4,7 @@ import org.springframework.data.domain.PageRequest
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import study.planner.app.plantransaction.dto.PlanTransactionsResponse
+import study.planner.app.plantransaction.service.dto.PlanTransactionsResponse
 import study.planner.app.plantransaction.repository.PlanTransactionRepository
 import study.planner.app.studyplan.repository.StudyPlanRepository
 import kotlin.streams.toList

@@ -2,10 +2,10 @@ package study.planner
 
 import org.springframework.stereotype.Component
 import study.planner.app.member.Member
-import study.planner.app.member.dto.MemberRequest
+import study.planner.app.member.controller.dto.MemberRequest
 import study.planner.app.plantransaction.PlanTransaction
 import study.planner.app.studyplan.domain.StudyPlan
-import study.planner.app.studyplan.dto.StudyPlanRegistrationRequest
+import study.planner.app.studyplan.controller.dto.StudyPlanRegistrationRequest
 import java.time.LocalDate
 import javax.annotation.PostConstruct
 import javax.persistence.EntityManager

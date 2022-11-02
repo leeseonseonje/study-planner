@@ -5,10 +5,10 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import study.planner.app.member.Member
-import study.planner.app.member.dto.MemberRequest
-import study.planner.app.plantransaction.dto.PlanTransactionRequest
+import study.planner.app.member.controller.dto.MemberRequest
+import study.planner.app.plantransaction.controller.dto.PlanTransactionRequest
 import study.planner.app.studyplan.domain.StudyPlan
-import study.planner.app.studyplan.dto.StudyPlanRegistrationRequest
+import study.planner.app.studyplan.controller.dto.StudyPlanRegistrationRequest
 import java.time.LocalDate
 
 class PlanTransactionTest {

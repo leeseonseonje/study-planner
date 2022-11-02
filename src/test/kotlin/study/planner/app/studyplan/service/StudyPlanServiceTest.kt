@@ -1,14 +1,13 @@
 package study.planner.app.studyplan.service
 
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.transaction.annotation.Transactional
 import study.planner.app.member.Member
-import study.planner.app.member.dto.MemberRequest
+import study.planner.app.member.controller.dto.MemberRequest
 import study.planner.app.member.repository.MemberRepository
-import study.planner.app.studyplan.dto.StudyPlanRegistrationRequest
+import study.planner.app.studyplan.controller.dto.StudyPlanRegistrationRequest
 import java.time.LocalDate
 
 @Transactional

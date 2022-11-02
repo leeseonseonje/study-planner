@@ -1,7 +1,5 @@
 package study.planner.app.plantransaction
 
-import study.planner.app.plantransaction.dto.PlanTransactionRequest
-import study.planner.app.plantransaction.dto.PlanTransactionsDto
 import study.planner.app.studyplan.domain.StudyPlan
 import java.time.LocalDate
 import javax.persistence.*

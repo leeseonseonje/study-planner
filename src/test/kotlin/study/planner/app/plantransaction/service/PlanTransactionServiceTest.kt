@@ -10,10 +10,10 @@ import org.springframework.data.repository.findByIdOrNull
 import org.springframework.transaction.annotation.Transactional
 import study.planner.app.member.Member
 import study.planner.app.member.repository.MemberRepository
-import study.planner.app.plantransaction.dto.PlanTransactionRequest
+import study.planner.app.plantransaction.controller.dto.PlanTransactionRequest
 import study.planner.app.plantransaction.repository.PlanTransactionRepository
 import study.planner.app.studyplan.domain.StudyPlan
-import study.planner.app.studyplan.dto.StudyPlanRegistrationRequest
+import study.planner.app.studyplan.controller.dto.StudyPlanRegistrationRequest
 import study.planner.app.studyplan.repository.StudyPlanRepository
 import java.time.LocalDate
 

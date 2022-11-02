@@ -1,4 +1,4 @@
-package study.planner.app.member.dto
+package study.planner.app.member.controller.dto
 
 import javax.validation.constraints.NotEmpty
 

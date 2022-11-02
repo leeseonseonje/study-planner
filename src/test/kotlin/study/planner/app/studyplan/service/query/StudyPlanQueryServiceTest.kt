@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional
 import study.planner.app.member.repository.MemberRepository
 import study.planner.app.studyplan.domain.PlanStatus.*
 import study.planner.app.studyplan.domain.StudyPlan
-import study.planner.app.studyplan.dto.StudyPlanRegistrationRequest
+import study.planner.app.studyplan.controller.dto.StudyPlanRegistrationRequest
 import study.planner.app.studyplan.repository.StudyPlanRepository
 import java.time.LocalDate
 
