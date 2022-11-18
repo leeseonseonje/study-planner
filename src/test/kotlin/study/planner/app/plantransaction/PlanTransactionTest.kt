@@ -18,7 +18,7 @@ class PlanTransactionTest {
     @BeforeEach
     fun init() {
         val member = Member.of(MemberRequest("na", "ema", "1234"))
-        studyPlan = StudyPlan.of(StudyPlanRegistrationRequest(1L, "", "", 1000, LocalDate.now()), member)
+        studyPlan = StudyPlan.of(StudyPlanRegistrationRequest(1L, "", "", 1000, LocalDate.now()), member, LocalDate.now())
     }
 
     @Test

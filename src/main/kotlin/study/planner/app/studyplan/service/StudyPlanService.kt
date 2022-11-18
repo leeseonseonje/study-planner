@@ -7,6 +7,7 @@ import study.planner.app.member.repository.MemberRepository
 import study.planner.app.studyplan.domain.StudyPlan
 import study.planner.app.studyplan.controller.dto.StudyPlanRegistrationRequest
 import study.planner.app.studyplan.repository.StudyPlanRepository
+import java.time.LocalDate
 
 @Service
 @Transactional
@@ -20,7 +21,7 @@ class StudyPlanService(
         println(member == null)
         member.let {
             println("member.let")
-            val studyPlan = StudyPlan.of(request, member)
+            val studyPlan = StudyPlan.of(request, member, LocalDate.now())
             studyPlanRepository.save(studyPlan)
         }
     }

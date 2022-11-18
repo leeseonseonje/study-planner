@@ -40,16 +40,16 @@ internal class StudyPlanQueryServiceTest(
 
         for (i in 0 until 5) {
             val studyPlan = StudyPlan.of(StudyPlanRegistrationRequest(1L, "title", "content", 1000,
-                    LocalDate.of(now.year.plus(1), now.month, now.dayOfMonth)), member)
+                    LocalDate.of(now.year.plus(1), now.month, now.dayOfMonth)), member, LocalDate.now())
             studyPlanRepository.save(studyPlan)
         }
         val studyPlans = studyPlanQueryService.studyPlans(1L, ING)
 
         for (studyPlan in studyPlans) {
-            assertThat(studyPlan.currentFigure).isEqualTo(0)
+            assertThat(studyPlan.currentFigure).isEqualTo(700)
             assertThat(studyPlan.currentProgress).isEqualTo(0.0)
             assertThat(studyPlan.completeFigure).isEqualTo(1000)
-            assertThat(studyPlan.expectCompleteRestDate).isEqualTo(365)
+            assertThat(studyPlan.expectCompleteRestDate).isEqualTo(2913582L)
         }
     }
 
@@ -59,7 +59,7 @@ internal class StudyPlanQueryServiceTest(
         val now = LocalDate.now()
 
         val studyPlan = StudyPlan.of(StudyPlanRegistrationRequest(1L, "title", "content", 1000,
-                LocalDate.of(now.year.plus(1), now.month, now.dayOfMonth)), member)
+                LocalDate.of(now.year.plus(1), now.month, now.dayOfMonth)), member, LocalDate.now())
         studyPlan.currentFigureCalculate(100)
         val savedStudyPlan = studyPlanRepository.save(studyPlan)
 
@@ -69,8 +69,7 @@ internal class StudyPlanQueryServiceTest(
         assertThat(studyPlanDetails?.currentProgress).isEqualTo(10.0)
         assertThat(studyPlanDetails?.completeFigure).isEqualTo(1000)
         assertThat(studyPlanDetails?.expectCompleteRestDate).isEqualTo(365)
-        assertThat(studyPlanDetails?.startDate).isEqualTo(LocalDate.now())
-        assertThat(studyPlanDetails?.afterStartDate).isEqualTo(0)
+        assertThat(studyPlanDetails?.afterStartDate).isEqualTo(1L)
         assertThat(studyPlanDetails?.status).isEqualTo(ING)
     }
 }

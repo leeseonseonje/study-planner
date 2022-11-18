@@ -33,7 +33,7 @@ internal class PlanTransactionQueryServiceTest(
     fun planTransactionsTest() {
 
         val member = memberRepository.findByIdOrNull(1L)
-        val studyPlan = StudyPlan.of(StudyPlanRegistrationRequest(1L, "title", "content", 1500, LocalDate.now()), member)
+        val studyPlan = StudyPlan.of(StudyPlanRegistrationRequest(1L, "title", "content", 1500, LocalDate.now()), member, LocalDate.now())
         val savedStudyPlan = studyPlanRepository.save(studyPlan)
         for (i in 1..10) {
             val now = i.times(10)

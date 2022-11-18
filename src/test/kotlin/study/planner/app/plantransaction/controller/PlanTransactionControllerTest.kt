@@ -37,17 +37,4 @@ internal class PlanTransactionControllerTest(
                 .andExpect(status().isOk)
                 .andExpect(view().name("plan-transaction/createPlanTransactionForm"))
     }
-
-    @Test
-    fun todayStudy() {
-        mockMvc
-                .perform(post("/plan-transaction")
-                        .session(session)
-                        .param("studyPlanId", "2")
-                        .param("dayFigure", "100")
-                        .param("day", "2022-02-22"))
-                .andDo(print())
-                .andExpect(status().isOk)
-                .andExpect(view().name("redirect:/"))
-    }
 }

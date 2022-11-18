@@ -50,7 +50,7 @@ class StudyPlan {
     }
 
     companion object {
-        fun of(request: StudyPlanRegistrationRequest, member: Member?): StudyPlan {
+        fun of(request: StudyPlanRegistrationRequest, member: Member?, today: LocalDate): StudyPlan {
             return StudyPlan(
                     member,
                     request.title,
@@ -58,7 +58,7 @@ class StudyPlan {
                     0,
                     request.completeFigure,
                     request.expectCompleteDate,
-                    LocalDate.now(),
+                    today,
                     null,
                     ING
             )

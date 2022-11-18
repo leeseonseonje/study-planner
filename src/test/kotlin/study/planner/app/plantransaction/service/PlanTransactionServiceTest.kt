@@ -38,7 +38,7 @@ internal class PlanTransactionServiceTest(
     fun init() {
         request = StudyPlanRegistrationRequest(1L, "title", "content", 1000, LocalDate.of(2022, 7, 1))
         member = memberRepository.findByIdOrNull(1L)
-        studyPlan = StudyPlan.of(request!!, member)
+        studyPlan = StudyPlan.of(request!!, member, LocalDate.now())
         studyPlanRepository.save(studyPlan!!)
     }
 
