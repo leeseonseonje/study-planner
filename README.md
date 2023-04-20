@@ -6,10 +6,12 @@
 
 하루단위로 사용자가 공부한 양을 전달받아, 목표날짜까지 남은시간, 현재 총 진행도, 오늘 진행한 진행도 등을 보여준다.
 
-## 기술 스택
-IDE: IntelliJ
+```
+사용기술: Kotlin, Spring Boot, Spring MVC, JPA, Spring Data JPA, Querydsl
+```
 
-BackEnd: Kotlin, Spring Boot, Spring MVC, JPA, Spring Data JPA, Querydsl, JUnit5
+## ERD
+![studyPlanner](https://user-images.githubusercontent.com/72899707/233382814-ccf3748d-42e2-41d6-8a41-2b02024f75e1.png)
 
 ## 회고
 이번 토이프로젝트를 한 이유는 두가지다.
