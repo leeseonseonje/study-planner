@@ -13,6 +13,10 @@
 ## ERD
 ![studyPlanner](https://user-images.githubusercontent.com/72899707/233382814-ccf3748d-42e2-41d6-8a41-2b02024f75e1.png)
 
+## Page
+<img width="770" alt="스크린샷 2023-04-20 오전 1 27 16" src="https://user-images.githubusercontent.com/72899707/233382988-0951a383-e8c9-42bb-aba8-cbcb9a95b93a.png">
+
+
 ## 회고
 이번 토이프로젝트를 한 이유는 두가지다.
 
